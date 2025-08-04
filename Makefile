@@ -1,80 +1,100 @@
-NAME        = miniRT
+NAME			= miniRT
 
-PATH_SRC    = src
-PATH_OBJ    = obj
+PATH_SRC		= src
+PATH_OBJ		= obj
 
-SUBDIRS     = main.c
+SUBDIRS			=  _gc vector parser entity util
 
-PATH_LIBS	= libs
+PATH_LIBS		= libs
 
-PATH_LIBFT  = $(PATH_LIBS)/libft
-PATH_MLX    = $(PATH_LIBS)/mlx
-PATH_MLX_METAL   = $(PATH_LIBS)/mlx/minilibx_metal
-PATH_MLX_LINUX   = $(PATH_LIBS)/mlx/minilibx_linux
-PATH_MLX_OPENGL  = $(PATH_LIBS)/mlx/minilibx_opengl
+PATH_LIBFT		= $(PATH_LIBS)/libft
+PATH_MLX		= $(PATH_LIBS)/mlx
+PATH_MLX_METAL	= $(PATH_LIBS)/mlx/minilibx_metal
+PATH_MLX_LINUX	= $(PATH_LIBS)/mlx/minilibx_linux
+PATH_MLX_OPENGL	= $(PATH_LIBS)/mlx/minilibx_opengl
+PATH_GNL		= $(PATH_LIBS)/gnl
 
-LIBFT       = $(PATH_LIBFT)/libft.a
+LIBFT			= $(PATH_LIBFT)/libft.a
+GNL				= $(PATH_GNL)/get_next_line.a
 
-SRC_DIRS    = $(PATH_SRC) $(addprefix $(PATH_SRC)/,$(SUBDIRS))
-OBJ_SUBDIRS = $(addprefix $(PATH_OBJ)/,$(SUBDIRS))
+SRC_DIRS		= $(PATH_SRC) $(addprefix $(PATH_SRC)/,$(SUBDIRS))
+OBJ_SUBDIRS		= $(addprefix $(PATH_OBJ)/,$(SUBDIRS))
 
-BASE_INC_DIRS = inc $(PATH_LIBFT) $(PATH_MLX)
-INC_DIRS      = $(addprefix $(PATH_SRC)/,$(SUBDIRS))
-PATH_INCLUDE  = $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
+BASE_INC_DIRS	= inc $(PATH_LIBFT) $(PATH_GNL) $(PATH_MLX)
+INC_DIRS		= $(addprefix $(PATH_SRC)/,$(SUBDIRS))
+PATH_INCLUDE	= $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
 
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -g -fsanitize=address #-Werror
 
-SRCS = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
+SRCS			= $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 
-OBJS = $(patsubst $(PATH_SRC)/%, \
-                  $(PATH_OBJ)/%, \
-                  $(SRCS:.c=.o))
+OBJS			= $(patsubst $(PATH_SRC)/%, \
+					$(PATH_OBJ)/%, \
+					$(SRCS:.c=.o))
 
-UNAME_S := $(shell uname -s)
-UNAME_M := $(shell uname -m)
+UNAME_S			:= $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
-	PATH_MLX := $(PATH_MLX_OPENGL)
+	PATH_MLX	:= $(PATH_MLX_OPENGL)
 else ifeq ($(UNAME_S),Linux)
-	PATH_MLX := $(PATH_MLX_LINUX)
+	PATH_MLX	:= $(PATH_MLX_LINUX)
 endif
 
-MLX        = $(PATH_MLX)/libmlx.a
-MLX_FLAGS  = -L$(PATH_MLX) -lmlx -framework OpenGL -framework AppKit
+MLX				= $(PATH_MLX)/libmlx.a
+MLX_FLAGS		= -L$(PATH_MLX) -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(LIBFT):
-	@make -C $(PATH_LIBFT)
+	@echo ">> Building libft"
+	@make -s -C $(PATH_LIBFT)
+
+$(GNL):
+	@echo ">> Building get_next_line"
+	@make -s -C $(PATH_GNL)
 
 $(MLX):
-	@make -C $(PATH_MLX)
+	@echo ">> Building mlx"
+	@make -s -C $(PATH_MLX) > /dev/null 2>&1
 
 $(PATH_OBJ):
+	@echo ">> Creating object directories"
 	@mkdir -p $(PATH_OBJ) $(OBJ_SUBDIRS)
 
 $(PATH_OBJ)/%.o: $(PATH_SRC)/%.c | $(PATH_OBJ)
+	@echo ">> Compiling $<"
 	@$(CC) $(CFLAGS) $(PATH_INCLUDE) -o $@ -c $<
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(LIBFT) $(MLX) $(GNL) $(OBJS)
+	@echo ">> Linking executable $(NAME)"
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(GNL) $(MLX_FLAGS) -o $(NAME)
+	@echo "M I N I - R T"
 
 clean:
+	@echo ">> Cleaning object files"
 	@make -s -C $(PATH_LIBFT) clean
+	@make -s -C $(PATH_GNL) clean
+	@make -s -C $(PATH_MLX) clean
 	@$(RM) -r $(PATH_OBJ)
 
 fclean: clean
+	@echo ">> Performing full clean"
 	@make -s -C $(PATH_LIBFT) fclean
+	@make -s -C $(PATH_GNL) fclean
+	@$(RM) -r $(MLX)
 	@$(RM) -r $(NAME)
 
 re: fclean all
 
 update_libs:
-	@rm -rf lib
-	@git clone https://github.com/Tuncayarda/Libft.git $(PATH_LIBFT)
-	@git clone https://github.com/Tuncayarda/minilibx_repo.git $(PATH_MLX)
+	@echo ">> Updating libraries..."
+	@rm -rf libs
+	@git clone https://github.com/Tuncayarda/Libft.git libs/libft
+	@git clone https://github.com/Tuncayarda/minilibx_repo.git libs/mlx
+	@git clone https://github.com/Tuncayarda/Get_next_line.git libs/gnl
 
 run_valgrind:
+	@echo ">> Running valgrind..."
 	@valgrind --leak-check=full \
 	         --show-leak-kinds=all \
 	         ./$(NAME)

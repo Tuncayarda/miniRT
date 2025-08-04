@@ -1,19 +1,29 @@
 #include <mlx.h>
 #include "minirt.h"
+#include "parser.h"
 
-int main(void)
+#include <stdio.h>
+
+int main(int ac, char **av)
 {
-    void *mlx;
-    void *win;
+    scene   sc;
+	sc.gc.head = NULL;
+    parser(&sc, ac, av);
 
-    mlx = mlx_init();
-    if (!mlx)
-        return (1);
+    printf("Ambient Light:\n");
+	printf("  Ratio: %.2f\n", sc.ambient.ratio);
+	printf("  Color (R,G,B): %u, %u, %u\n",
+		sc.ambient.color.r,
+		sc.ambient.color.g,
+		sc.ambient.color.b);
 
-    win = mlx_new_window(mlx, 800, 600, "miniRT");
-    if (!win)
-        return (1);
+	printf("\nCamera Info:\n");
+	printf("  Position: %.2f, %.2f, %.2f\n",
+		sc.cam.loc.x, sc.cam.loc.y, sc.cam.loc.z);
+	printf("  Direction: %.2f, %.2f, %.2f\n",
+		sc.cam.dir.x, sc.cam.dir.y, sc.cam.dir.z);
+	printf("  FOV: %d\n", sc.cam.fov);
 
-    mlx_loop(mlx);
-    return (0);
+	gc_free_all(&sc.gc);
+	return (0);
 }

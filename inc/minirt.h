@@ -1,7 +1,13 @@
 #ifndef __MINI_RT__
 # define __MINI_RT__
 
-#include "entities.h"
+# define WIDTH	1920
+# define HEIGHT	1080
+
+# define ERROR_MSG_DFL "Error\n"
+
+# include "entities.h"
+# include "gc.h"
 
 typedef struct	s_scene
 {
@@ -10,8 +16,7 @@ typedef struct	s_scene
 	light			*lights;
 	entity			*ents;
 	size_t			ent_count;
+	gc				gc;
 }				scene;
-
-
 
 #endif
