@@ -15,6 +15,7 @@ typedef struct	s_scene
 	camera			cam;
 	light			*lights;
 	entity			*ents;
+	size_t			light_count;
 	size_t			ent_count;
 	gc				gc;
 }				scene;

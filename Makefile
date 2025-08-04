@@ -3,7 +3,7 @@ NAME			= miniRT
 PATH_SRC		= src
 PATH_OBJ		= obj
 
-SUBDIRS			=  _gc vector parser entity util
+SUBDIRS			=  _gc vector parser entities util
 
 PATH_LIBS		= libs
 

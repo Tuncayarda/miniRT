@@ -73,4 +73,8 @@ typedef struct		s_cylinder
 	float			h;
 }					cylinder;
 
+typedef struct	s_scene scene;
+
+void	add_light(scene *sc, vec3 loc, color color, float ratio);
+
 #endif

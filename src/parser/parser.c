@@ -15,9 +15,11 @@ void	parse_line(scene *sc, char *line)
 	if (!args || !args[0])
 		return ;
 	if (ft_strcmp(args[0], "A") == 0)
-		set_amb_light(sc, args);
+		parse_amb_light(sc, args);
 	else if (ft_strcmp(args[0], "C") == 0)
-		set_cam(sc, args);
+		parse_cam(sc, args);
+	else if (ft_strcmp(args[0], "L") == 0)
+		parse_light(sc, args);
 }
 
 void	parse(scene *sc, int fd)
