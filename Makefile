@@ -3,7 +3,7 @@ NAME			= miniRT
 PATH_SRC		= src
 PATH_OBJ		= obj
 
-SUBDIRS			=  _gc vector parser entities util
+SUBDIRS			=  _gc vector parser entities util debug
 
 PATH_LIBS		= libs
 
@@ -24,7 +24,7 @@ BASE_INC_DIRS	= inc $(PATH_LIBFT) $(PATH_GNL) $(PATH_MLX)
 INC_DIRS		= $(addprefix $(PATH_SRC)/,$(SUBDIRS))
 PATH_INCLUDE	= $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
 
-CFLAGS			= -Wall -Wextra -g  -fsanitize=address#-Werror
+CFLAGS			= -Wall -Wextra #-Werror
 
 SRCS			= $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 
@@ -32,7 +32,7 @@ OBJS			= $(patsubst $(PATH_SRC)/%, \
 					$(PATH_OBJ)/%, \
 					$(SRCS:.c=.o))
 
-UNAME_S			:= $(shell uname -s)
+UNAME_S			= $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
 	PATH_MLX    := $(PATH_MLX_OPENGL)

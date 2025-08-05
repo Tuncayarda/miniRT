@@ -1,7 +1,7 @@
 #include <math.h>
 #include "vector.h"
 
-vec3	vec_normalize(vec3 v)
+vec3	vec_norm(vec3 v)
 {
 	float	len;
 	vec3	result;
