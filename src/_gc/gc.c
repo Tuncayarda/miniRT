@@ -6,59 +6,71 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 21:01:26 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/08/05 00:07:14 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/08/05 05:26:33 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <gc.h>
 
-void	*gc_track(gc *gc, void *ptr)
+static t_gc_node	**get_gc_head(void)
 {
-	t_gc_node	*node;
+	static t_gc_node	*head;
 
-	if (!ptr)
-		return (NULL);
-	node = malloc(sizeof(t_gc_node));
-	if (!node)
-		return (NULL);
-	node->ptr = ptr;
-	node->next = gc->head;
-	gc->head = node;
-	return (ptr);
+	return (&head);
 }
 
-void	**gc_track_array(gc *gc, void **array)
+static void	gc_free_all(void)
+{
+	t_gc_node	**head;
+	t_gc_node	*tmp;
+
+	head = get_gc_head();
+	while (*head)
+	{
+		if ((*head)->ptr)
+			free((*head)->ptr);
+		tmp = *head;
+		*head = (*head)->next;
+		free(tmp);
+	}
+}
+
+static void	*gc_track_array(void **arr)
 {
 	size_t	i;
 
-	if (!array)
+	if (!arr)
 		return (NULL);
 	i = 0;
-	while (array[i])
+	while (arr[i])
 	{
-		gc_track(gc, array[i]);
+		gc_manager(arr[i], MODE_ADD);
 		i++;
 	}
-	gc_track(gc, array);
-	return (array);
+	gc_manager(arr, MODE_ADD);
+	return (arr);
 }
 
-void	gc_free_all(gc *gc)
+void	*gc_manager(void *ptr, t_gc_mode mode)
 {
-	t_gc_node	*current;
-	t_gc_node	*tmp;
+	t_gc_node	**head;
+	t_gc_node	*node;
 
-	current = gc->head;
-	while (current)
+	head = get_gc_head();
+	if (mode == MODE_FREE)
 	{
-		if (current->ptr)
-			free(current->ptr);
-		current->ptr = NULL;
-		tmp = current;
-		current = current->next;
-		if (tmp)
-			free(tmp);
-		tmp = NULL;
+		gc_free_all();
+		return (NULL);
 	}
-	gc->head = NULL;
+	if (mode == MODE_ADD_ARR)
+		return (gc_track_array((void **)ptr));
+	if (!ptr)
+		return (NULL);
+	node = (t_gc_node *)malloc(sizeof(t_gc_node));
+	if (!node)
+		return (NULL);
+	node->ptr = ptr;
+	node->next = *head;
+	*head = node;
+	return (ptr);
 }

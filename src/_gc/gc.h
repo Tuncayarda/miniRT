@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 20:59:51 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/08/05 00:07:09 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/08/05 05:28:20 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
+typedef enum e_gc_mode
+{
+	MODE_ADD,
+	MODE_ADD_ARR,
+	MODE_FREE
+}	t_gc_mode;
+
 typedef struct			s_gc_node
 {
 	void				*ptr;
 	struct s_gc_node	*next;
 }						t_gc_node;
 
-typedef struct			s_gc
-{
-	t_gc_node			*head;
-}						gc;
-
-void					*gc_track(gc *gc, void *ptr);
-void					**gc_track_array(gc *gc, void **array);
-void					gc_free_all(gc *gc);
+void	*gc_manager(void *ptr, t_gc_mode mode);
 
 #endif

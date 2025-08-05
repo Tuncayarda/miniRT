@@ -11,7 +11,8 @@ void	parse_line(scene *sc, char *line)
 
 	if (!line || *line == '\n')
 		return ;
-	args = (char **)gc_track_array(&sc->gc, (void **)ft_split(line, '\t'));
+	args = ft_split(line, '\t');
+	gc_manager(args, MODE_ADD_ARR);
 	if (!args || !args[0])
 		return ;
 	if (ft_strcmp(args[0], "A") == 0)
@@ -20,6 +21,8 @@ void	parse_line(scene *sc, char *line)
 		parse_cam(sc, args);
 	else if (ft_strcmp(args[0], "L") == 0)
 		parse_light(sc, args);
+	else if (ft_strcmp(args[0], "sp") == 0)
+		parse_sphere(sc, args);
 }
 
 void	parse(scene *sc, int fd)
