@@ -5,6 +5,7 @@
 # include <stdbool.h>
 # include <stdint.h>
 # include "vector.h"
+
 typedef union		u_color
 {
 	struct
@@ -19,10 +20,10 @@ typedef union		u_color
 
 typedef enum		e_ent_type
 {
-	OBJ_SPHERE,
-	OBJ_PLANE,
-	OBJ_CYLINDER,
-	OBJ_UNKNOWN
+	ENT_SPHERE,
+	ENT_PLANE,
+	ENT_CYLINDER,
+	ENT_UNKNOWN
 }					ent_type;
 
 typedef struct s_material
@@ -91,6 +92,8 @@ typedef struct		s_sphere
 	material		mat;
 }					sphere;
 
+sphere	*generate_sphere(sphere *s);
+
 typedef struct		s_plane
 {
 	vec3			pos;
@@ -112,5 +115,6 @@ typedef struct		s_cylinder
 typedef struct	s_scene scene;
 
 void	add_light(scene *sc, light l);
+void	add_entity(scene *sc, void *ent, ent_type type);
 
 #endif

@@ -24,7 +24,7 @@ BASE_INC_DIRS	= inc $(PATH_LIBFT) $(PATH_GNL) $(PATH_MLX)
 INC_DIRS		= $(addprefix $(PATH_SRC)/,$(SUBDIRS))
 PATH_INCLUDE	= $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
 
-CFLAGS			= -Wall -Wextra -g #-Werror
+CFLAGS			= -Wall -Wextra -g  -fsanitize=address#-Werror
 
 SRCS			= $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 

@@ -49,6 +49,34 @@ int main(int ac, char **av)
 			printf("  Type: POINT\n");
 		}
 	}
+
+	printf("\nEntities (%zu total):\n", sc.ent_count);
+	for (size_t i = 0; i < sc.ent_count; i++)
+	{
+		printf("\n  Entity %zu: ", i);
+		if (sc.ents[i].type == ENT_SPHERE)
+		{
+			printf("SPHERE\n");
+			sphere *s = (sphere *)sc.ents[i].ent;
+			printf("    Position: %.2f, %.2f, %.2f\n", s->pos.x, s->pos.y, s->pos.z);
+			printf("    Diameter: %.2f\n", s->dia);
+			printf("    Color (R,G,B): %u, %u, %u\n",
+				s->color.r, s->color.g, s->color.b);
+			printf("    Specular: strength=%.2f, shininess=%.2f\n",
+				s->mat.specular_strength, s->mat.shininess);
+			if (s->mat.has_checker)
+				printf("    Checker: scale=%.2f, color (R,G,B) = %u, %u, %u\n",
+					s->mat.checker_scale,
+					s->mat.checker_color.r, s->mat.checker_color.g, s->mat.checker_color.b);
+		}
+		else if (sc.ents[i].type == ENT_PLANE)
+			printf("PLANE\n");
+		else if (sc.ents[i].type == ENT_CYLINDER)
+			printf("CYLINDER\n");
+		else
+			printf("UNKNOWN\n");
+	}
+
 	gc_manager(NULL, MODE_FREE);
 
 	return (0);

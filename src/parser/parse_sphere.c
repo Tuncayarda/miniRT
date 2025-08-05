@@ -3,7 +3,7 @@
 #include "minirt.h"
 #include "libft.h"
 #include "util.h"
-#include <stdio.h>
+
 static void	parse_specs(sphere *s, char **args)
 {
 	size_t	i;
@@ -56,7 +56,7 @@ void	parse_sphere(scene *sc, char **args)
 		s.color.g = ft_atof(ft_strchr(args[3], ',') + 1);
 		s.color.b = ft_atof(ft_strrchr(args[3], ',') + 1);
 		parse_specs(&s, args);
-		//some function to generate this entity
+		add_entity(sc, generate_sphere(&s), ENT_SPHERE);
 	}
 	else
 		raise_error(sc, ERROR_MSG_DFL);
