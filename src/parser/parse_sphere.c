@@ -3,7 +3,7 @@
 #include "minirt.h"
 #include "libft.h"
 #include "util.h"
-
+#include <stdio.h>
 static void	parse_specs(sphere *s, char **args)
 {
 	size_t	i;
@@ -28,11 +28,14 @@ static void	parse_specs(sphere *s, char **args)
 		else if (ft_strncmp(args[i], "tex:", 4) == 0)
 		{
 			s->mat.has_texture = true;
-		
+			s->mat.texture_path = gc_manager(ft_substr(args[i], 4, ft_strlen(args[i] + 4) - ft_strlen(ft_strrchr(args[i], ','))) , MODE_ADD);
+			s->mat.texture_scale = ft_atof(ft_strrchr(args[i], ',') + 1);
 		}
 		else if (ft_strncmp(args[i], "bum:", 4) == 0)
 		{
-
+			s->mat.has_bump= true;
+			s->mat.bump_path = gc_manager(ft_substr(args[i], 4, ft_strlen(args[i] + 4) - ft_strlen(ft_strrchr(args[i], ','))) , MODE_ADD);
+			s->mat.bump_strength = ft_atof(ft_strrchr(args[i], ',') + 1);
 		}
 		i++;
 	}

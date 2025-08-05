@@ -10,6 +10,8 @@
 int main(int ac, char **av)
 {
     scene	sc;
+	sc.light_count = 0;
+	sc.ent_count = 0;
 	sc.lights = NULL;
 
     parser(&sc, ac, av);
@@ -47,7 +49,7 @@ int main(int ac, char **av)
 			printf("  Type: POINT\n");
 		}
 	}
-	//gc_manager(NULL, MODE_FREE);
+	gc_manager(NULL, MODE_FREE);
 
 	return (0);
 }

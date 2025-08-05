@@ -11,8 +11,7 @@ void	parse_line(scene *sc, char *line)
 
 	if (!line || *line == '\n')
 		return ;
-	args = ft_split(line, '\t');
-	gc_manager(args, MODE_ADD_ARR);
+	args = gc_manager(ft_split(line, '\t'), MODE_ADD_ARR);
 	if (!args || !args[0])
 		return ;
 	if (ft_strcmp(args[0], "A") == 0)

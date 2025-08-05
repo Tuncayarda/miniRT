@@ -35,13 +35,14 @@ OBJS			= $(patsubst $(PATH_SRC)/%, \
 UNAME_S			:= $(shell uname -s)
 
 ifeq ($(UNAME_S),Darwin)
-	PATH_MLX	:= $(PATH_MLX_OPENGL)
+	PATH_MLX    := $(PATH_MLX_OPENGL)
+	MLX_FLAGS   = -L$(PATH_MLX) -lmlx -framework OpenGL -framework AppKit
 else ifeq ($(UNAME_S),Linux)
-	PATH_MLX	:= $(PATH_MLX_LINUX)
+	PATH_MLX    := $(PATH_MLX_LINUX)
+	MLX_FLAGS   = -L$(PATH_MLX) -lmlx -lXext -lX11 -lm -lz
 endif
 
 MLX				= $(PATH_MLX)/libmlx.a
-MLX_FLAGS		= -L$(PATH_MLX) -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
