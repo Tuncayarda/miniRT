@@ -22,6 +22,10 @@ void	parse_line(scene *sc, char *line)
 		parse_light(sc, args);
 	else if (ft_strcmp(args[0], "sp") == 0)
 		parse_sphere(sc, args);
+	else if (ft_strcmp(args[0], "pl") == 0)
+		parse_plane(sc, args);
+	else if (ft_strcmp(args[0], "cy") == 0)
+		parse_cylinder(sc, args);
 }
 
 void	parse(scene *sc, int fd)

@@ -92,8 +92,6 @@ typedef struct		s_sphere
 	material		mat;
 }					sphere;
 
-sphere	*generate_sphere(sphere *s);
-
 typedef struct		s_plane
 {
 	vec3			pos;
@@ -111,6 +109,8 @@ typedef struct		s_cylinder
 	float			h;
 	material		mat;
 }					cylinder;
+
+void	*generate_entity(void *src, ent_type type);
 
 typedef struct	s_scene scene;
 

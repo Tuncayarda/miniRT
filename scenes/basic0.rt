@@ -1,18 +1,42 @@
-A	0.2				255,255,255																# Ambient light (ratio, color)
+# Ambient Light
+A	0.2				255,255,255
 
-C	0,5,20			0,0,-1				45													# Camera (position, direction, fov)
+# Camera
+C	0,5,20			0,0,-1				45
 
-L	10,10,10		0.7				255,0,0													# Point light (no direction, no angle)
-L	-10,10,10		0.6				0,255,0		dir:0.0,-1.0,0.0							# Spot light with direction only
-L	0,20,10			0.8				0,0,255		ang:25										# Spot light with angle only
-L	0,30,10			0.9				255,255,0	dir:0.0,-1.0,0.0	ang:15					# Full spot light (direction + angle)
+# Lights
+L	10,10,10		0.7				255,0,0
+L	-10,10,10		0.6				0,255,0		dir:0.0,-1.0,0.0
+L	0,20,10			0.8				0,0,255		ang:25
+L	0,30,10			0.9				255,255,0	dir:0.0,-1.0,0.0	ang:15
 
-sp	0,0,30			10				255,0,0																					# Sphere (pos, dia, color)
-sp	10,0,30			10				0,255,0		spc:1.0,50																	# Sphere with specular (strength, shininess)
-sp	20,0,30			10				255,255,255	che:0,0,0:5																	# Sphere with checker pattern (color, scale)
-sp	30,0,30			10				255,255,255	spc:0.5,10	che:0,0,255:3													# Sphere with specular + checker
-sp	40,0,30			10				255,128,0	tex:textures/sample.xpm,1.5													# Sphere with texture (path, scale)
-sp	50,0,30			10				0,255,255	bum:textures/sample.xpm,0.6													# Sphere with bump map (path, strength)
-sp	60,0,30			10				128,0,255	tex:textures/sample.xpm,1.0	bum:textures/sample.xpm,0.3						# Sphere with texture + bump
-sp	70,0,30			10				255,255,255	spc:0.7,20	tex:textures/sample.xpm,2.0	bum:textures/sample.xpm,0.4			# Full material sphere
-sp	80,0,30			10				255,255,0	spc:1.0,100	che:100,100,100:8												# Specular + checker
+# Spheres
+sp	0,0,30			10				255,0,0
+sp	10,0,30			10				0,255,0		spc:1.0,50
+sp	20,0,30			10				255,255,255	che:0,0,0:5
+sp	30,0,30			10				255,255,255	spc:0.5,10	che:0,0,255:3
+sp	40,0,30			10				255,128,0	tex:textures/sample.xpm,1.5
+sp	50,0,30			10				0,255,255	bum:textures/sample.xpm,0.6
+sp	60,0,30			10				128,0,255	tex:textures/sample.xpm,1.0	bum:textures/sample.xpm,0.3
+sp	70,0,30			10				255,255,255	spc:0.7,20	tex:textures/sample.xpm,2.0	bum:textures/sample.xpm,0.4
+sp	80,0,30			10				255,255,0	spc:1.0,100	che:100,100,100:8
+
+# Planes
+pl	0,0,0			0,1,0				255,255,255
+pl	10,0,0			1,0,0				255,0,0			spc:1.0,50
+pl	-10,0,0			0,1,0				0,255,0			che:0,0,0:5
+pl	0,0,10			0,1,0				0,0,255			tex:textures/wood.xpm,2.0
+pl	0,0,-10			0,1,0				255,255,0		bum:textures/stone.xpm,0.7
+pl	0,-5,0			0,1,0				255,255,255		spc:0.3,20	che:255,0,255:4
+pl	0,5,0			0,-1,0				200,200,200		tex:textures/fabric.xpm,1.5	bum:textures/fabric_bump.xpm,0.4
+pl	5,0,5			1,1,0				128,128,128		spc:0.8,70	tex:textures/marble.xpm,1.0	bum:textures/marble_bump.xpm,0.5
+
+# Cylinders
+cy	50.0,0.0,20.6	0.0,0.0,1.0	14.2	21.42	10,0,255
+cy	0,0,10			0,1,0		5.0		10.0	255,0,0
+cy	10,0,30			0,1,0		6.5		15.0	0,255,0		spc:1.0,50
+cy	20,0,30			0,1,0		6.5		15.0	255,255,255	che:0,0,0:3
+cy	30,0,30			0,1,0		6.5		15.0	200,200,200	tex:textures/metal.xpm,2.0
+cy	40,0,30			0,1,0		6.5		15.0	150,150,255	bum:textures/noise.xpm,0.6
+cy	60,0,30			0,1,0		6.5		15.0	255,255,0	spc:0.5,20 che:255,0,0:5 tex:textures/metal.xpm,1.5 bum:textures/metal_bump.xpm,0.4
+cy	100,0,50		1,1,0		20.0	25.0	0,255,255	spc:0.7,70 tex:textures/pipe.xpm,1.0

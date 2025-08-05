@@ -4,43 +4,6 @@
 #include "libft.h"
 #include "util.h"
 
-static void	parse_specs(sphere *s, char **args)
-{
-	size_t	i;
-
-	i = 0;
-	while (args[i])
-	{
-		if (ft_strncmp(args[i], "spc:", 4) == 0)
-		{
-			s->mat.has_spc = true;
-			s->mat.specular_strength = ft_atof(args[i] + 4);
-			s->mat.shininess = ft_atof(ft_strchr(args[i] + 4, ',') + 1);
-		}
-		else if (ft_strncmp(args[i], "che:", 4) == 0)
-		{
-			s->mat.has_checker = true;
-			s->mat.checker_scale = ft_atof(ft_strrchr(args[i], ':') + 1);
-			s->mat.checker_color.r = ft_atof(args[i] + 4);
-			s->mat.checker_color.g = ft_atoi(ft_strchr(args[i] + 4, ',') + 1);
-			s->mat.checker_color.b = ft_atoi(ft_strrchr(args[i], ',') + 1);
-		}
-		else if (ft_strncmp(args[i], "tex:", 4) == 0)
-		{
-			s->mat.has_texture = true;
-			s->mat.texture_path = gc_manager(ft_substr(args[i], 4, ft_strlen(args[i] + 4) - ft_strlen(ft_strrchr(args[i], ','))) , MODE_ADD);
-			s->mat.texture_scale = ft_atof(ft_strrchr(args[i], ',') + 1);
-		}
-		else if (ft_strncmp(args[i], "bum:", 4) == 0)
-		{
-			s->mat.has_bump= true;
-			s->mat.bump_path = gc_manager(ft_substr(args[i], 4, ft_strlen(args[i] + 4) - ft_strlen(ft_strrchr(args[i], ','))) , MODE_ADD);
-			s->mat.bump_strength = ft_atof(ft_strrchr(args[i], ',') + 1);
-		}
-		i++;
-	}
-}
-
 void	parse_sphere(scene *sc, char **args)
 {
 	sphere	s;
@@ -55,8 +18,8 @@ void	parse_sphere(scene *sc, char **args)
 		s.color.r = ft_atof(args[3]);
 		s.color.g = ft_atof(ft_strchr(args[3], ',') + 1);
 		s.color.b = ft_atof(ft_strrchr(args[3], ',') + 1);
-		parse_specs(&s, args);
-		add_entity(sc, generate_sphere(&s), ENT_SPHERE);
+		parse_material(&s.mat, args);
+		add_entity(sc, generate_entity(&s, ENT_SPHERE), ENT_SPHERE);
 	}
 	else
 		raise_error(sc, ERROR_MSG_DFL);
