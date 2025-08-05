@@ -9,7 +9,7 @@
 # include "entities.h"
 # include "gc.h"
 
-typedef struct	s_scene
+typedef struct		s_scene
 {
 	ambient_light	ambient;
 	camera			cam;
@@ -17,6 +17,6 @@ typedef struct	s_scene
 	entity			*ents;
 	size_t			light_count;
 	size_t			ent_count;
-}				scene;
+}					scene;
 
 #endif

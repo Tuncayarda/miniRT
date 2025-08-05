@@ -5,7 +5,7 @@ C	0,5,20			0,0,-1				45													# Camera (position, direction, fov)
 L	10,10,10		0.7				255,0,0													# Point light (no direction, no angle)
 L	-10,10,10		0.6				0,255,0		dir:0.0,-1.0,0.0							# Spot light with direction only
 L	0,20,10			0.8				0,0,255		ang:25										# Spot light with angle only
-L	0,30,10			0.9				255,255,0	dir:0.0,-1.0,0.0	ang:15						# Full spot light (direction + angle)
+L	0,30,10			0.9				255,255,0	dir:0.0,-1.0,0.0	ang:15					# Full spot light (direction + angle)
 
 sp	0,0,30			10				255,0,0																					# Sphere (pos, dia, color)
 sp	10,0,30			10				0,255,0		spc:1.0,50																	# Sphere with specular (strength, shininess)

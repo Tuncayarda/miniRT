@@ -3,8 +3,8 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
+# include <stdint.h>
 # include "vector.h"
-
 typedef union		u_color
 {
 	struct
@@ -28,21 +28,23 @@ typedef enum		e_ent_type
 typedef struct s_material
 {
 	bool			has_spc;
+	bool			has_checker;
+	bool			has_texture;
+	bool			has_bump;
+
 	float			specular_strength;   // Intensity of specular reflection (spc:x)
 	float			shininess;           // Shininess factor controlling specular spread (spc:y)
 
-	bool			has_checker;
 	color			checker_color;       // Base color used for checker pattern (if enabled)
 	float			checker_scale;       // Scale of the checker pattern (pat:x)
 
-	bool			has_texture;
-	char			*texture_path;       // File path to texture map (txm)
 	float			texture_scale;       // Scale/repetition factor for texture (txm:scale)
-	void			*texture_img;        // Pointer to loaded texture image
-
-	bool			has_bump;
-	char			*bump_path;          // File path to bump map (bum)
 	float			bump_strength;       // Strength/depth of bump effect (bum:scale)
+
+	char			*texture_path;       // File path to texture map (txm)
+	void			*texture_img;        // Pointer to loaded texture image
+	
+	char			*bump_path;          // File path to bump map (bum)
 	void			*bump_img;           // Pointer to loaded bump image
 }					material;
 
@@ -83,9 +85,9 @@ typedef struct		s_light
 
 typedef struct		s_sphere
 {
-	vec3			pos;
 	color			color;
 	float			dia;
+	vec3			pos;
 	material		mat;
 }					sphere;
 
