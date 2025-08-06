@@ -17,9 +17,9 @@ void	parse_plane(scene *sc, char **args)
 		p.axis.x = ft_atof(args[2]);
 		p.axis.y = ft_atof(ft_strchr(args[2], ',') + 1);
 		p.axis.z = ft_atof(ft_strrchr(args[2], ',') + 1);
-		p.color.r = ft_atof(args[2]);
-		p.color.g = ft_atof(ft_strchr(args[2], ',') + 1);
-		p.color.b = ft_atof(ft_strrchr(args[2], ',') + 1);
+		p.color.r = ft_atof(args[3]);
+		p.color.g = ft_atof(ft_strchr(args[3], ',') + 1);
+		p.color.b = ft_atof(ft_strrchr(args[3], ',') + 1);
 		parse_material(&p.mat, args);
 		add_entity(sc, generate_entity(&p, ENT_PLANE), ENT_PLANE);
 	}
