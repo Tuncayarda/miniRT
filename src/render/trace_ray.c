@@ -10,7 +10,9 @@ color	trace_ray(scene *sc, ray r)
 	float	closest;
 
 	closest = INFINITY;
-	rtn = sc->ambient.color;
+	rtn.r = sc->ambient.color.r * sc->ambient.ratio;
+	rtn.g = sc->ambient.color.g * sc->ambient.ratio;
+	rtn.b = sc->ambient.color.b * sc->ambient.ratio;
 	i = 0;
 	while (i < sc->ent_count)
 	{
