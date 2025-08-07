@@ -66,6 +66,10 @@ typedef struct		s_camera
 	vec3			pos;
 	vec3			dir;
 	__uint8_t		fov;
+	float			half_height;
+	float			half_width;
+	vec3			right;
+	vec3			up;
 }					camera;
 
 typedef enum		e_light_type

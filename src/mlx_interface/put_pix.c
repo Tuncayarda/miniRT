@@ -4,7 +4,7 @@
 
 void	put_pix(mlx *m, size_t x, size_t y, color color)
 {
-	char *pixel;
+	char	*pixel;
 
 	if (x >= WIDTH || y >= HEIGHT)
 		return ;
