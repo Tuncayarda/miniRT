@@ -3,20 +3,9 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
-# include <stdint.h>
 # include "vector.h"
+# include "color.h"
 
-typedef union		u_color
-{
-	struct
-	{
-		__uint8_t	b;
-		__uint8_t	g;
-		__uint8_t	r;
-		__uint8_t	a;
-	};
-	__uint32_t		val;
-}					color;
 
 typedef enum		e_ent_type
 {

@@ -1,6 +1,8 @@
 #ifndef __VECTOR_H__
 # define __VECTOR_H__
 
+#define VECTOR_INIT (vec3){0, 0, 0}
+
 typedef struct	s_vec3
 {
 	float		x;

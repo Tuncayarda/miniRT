@@ -12,5 +12,5 @@ void	put_pix(mlx *m, size_t x, size_t y, color color)
 	pixel[0] = color.b;
 	pixel[1] = color.g;
 	pixel[2] = color.r;
-	pixel[3] = color.a;
+	pixel[3] = (char)0;
 }
