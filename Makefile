@@ -24,7 +24,6 @@ BASE_INC_DIRS	= inc $(PATH_LIBFT) $(PATH_GNL) $(PATH_MLX)
 INC_DIRS		= $(addprefix $(PATH_SRC)/,$(SUBDIRS))
 PATH_INCLUDE	= $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
 
-CFLAGS			= -Wall -Wextra -O3#-Werror
 
 SRCS			= $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 
@@ -43,6 +42,9 @@ else ifeq ($(UNAME_S),Linux)
 	MLX_FLAGS   = -L$(PATH_MLX) -lmlx -lXext -lX11 -lm -lz
 	CFLAGS      += -I/usr/include -I/usr/include/X11
 endif
+
+CFLAGS		= -Wall -Wextra -O3 -ffast-math -flto -fno-math-errno -march=native -mtune=native #Werror
+LDFLAGS		= -flto
 
 MLX				= $(PATH_MLX)/libmlx.a
 
@@ -70,7 +72,7 @@ $(PATH_OBJ)/%.o: $(PATH_SRC)/%.c | $(PATH_OBJ)
 
 $(NAME): $(LIBFT) $(MLX) $(GNL) $(OBJS)
 	@echo ">> Linking executable $(NAME)"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(GNL) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(LDFLAGS) $(OBJS) $(LIBFT) $(GNL) $(MLX_FLAGS) -o $(NAME)
 	@echo "M I N I - R T"
 
 clean:

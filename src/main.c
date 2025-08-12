@@ -17,8 +17,6 @@ static void init_mlx(mlx *m)
     m->addr = mlx_get_data_addr(m->img, &m->bpp, &m->line_len, &m->endian);
 }
 
-
-
 static int render_loop(void *param)
 {
     scene *sc = (scene *)param;
