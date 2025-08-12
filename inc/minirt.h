@@ -1,8 +1,8 @@
 #ifndef __MINI_RT__
 # define __MINI_RT__
 
-# define WIDTH	1700.0f
-# define HEIGHT	1100.0f
+# define WIDTH	1280.0f
+# define HEIGHT	720.0f
 # define ASPECT_RATIO WIDTH / HEIGHT
 # define WORLD_UP (vec3){0, 1, 0}
 
@@ -21,6 +21,7 @@ typedef struct			s_scene
 	size_t				light_count;
 	size_t				ent_count;
 	mlx					mlx;
+	char				**av;
 }						scene;
 
 #endif

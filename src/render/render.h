@@ -16,5 +16,6 @@ ray 	generate_ray(camera *cam, int x, int y);
 color	trace_ray(scene *sc, ray r);
 
 bool	hit_sphere(sphere *s, ray r, float *t_hit);
+bool	hit_plane(plane *pl, ray r, float *t_hit);
 
 #endif

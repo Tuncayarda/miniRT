@@ -1,6 +1,6 @@
 #include "color.h"
 
-color	color_mod(color a, color b)
+color	color_modul(color a, color b)
 {
 	color	rtn;
 

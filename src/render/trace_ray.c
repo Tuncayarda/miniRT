@@ -25,6 +25,14 @@ color	trace_ray(scene *sc, ray r)
 				closest_i = i;
 			}
 		}
+		else if (sc->ents[i].type == ENT_PLANE)
+		{
+			if (hit_plane(sc->ents[i].ent, r, &t) && t < closest_t)
+			{
+				closest_t = t;
+				closest_i = i;
+			}
+		}
 		i++;
 	}
 	if (closest_i == -1)
@@ -34,7 +42,6 @@ color	trace_ray(scene *sc, ray r)
 	vec3	normal;
 	vec3	l_dir;
 	color	base;
-	float	intensity;
 
 	base = COLOR_INIT;
 	normal = VECTOR_INIT;
@@ -44,15 +51,28 @@ color	trace_ray(scene *sc, ray r)
 		normal = vec_norm(vec_sub(hit_p, ((sphere *)sc->ents[closest_i].ent)->pos));
 		base = ((sphere *)sc->ents[closest_i].ent)->color;
 	}
-
-	l_dir = vec_norm(vec_sub(sc->lights[0].pos, hit_p));
-	intensity = fmaxf(0.0f, vec_dot(normal, l_dir)) * sc->lights[0].ratio;
+	else if (sc->ents[closest_i].type == ENT_PLANE)
+	{
+		normal = vec_norm(((plane *)sc->ents[closest_i].ent)->axis);
+		base = ((plane *)sc->ents[closest_i].ent)->color;
+	}
 
 	color	diffuse;
 	color	ambient;
+	color	total_diffuse;
+	size_t	li;
+	float	intensity;
 
-	diffuse = color_scale(color_mod(base, sc->lights[0].color), intensity);
-	ambient = color_scale(color_mod(base, sc->ambient.color), sc->ambient.ratio);
-
-	return (color_add(ambient, diffuse));
+	li = 0;
+	total_diffuse = COLOR_INIT;
+	ambient = color_scale(color_modul(base, sc->ambient.color), sc->ambient.ratio);
+	while (li < sc->light_count)
+	{
+		l_dir = vec_norm(vec_sub(sc->lights[li].pos, hit_p));
+		intensity = fmaxf(0.0f, vec_dot(normal, l_dir)) * sc->lights[li].ratio;
+		diffuse = color_scale(color_modul(base, sc->lights[li].color), intensity);
+		total_diffuse = color_add(total_diffuse, diffuse);
+		li++;
+	}
+	return (color_add(ambient, total_diffuse));
 }

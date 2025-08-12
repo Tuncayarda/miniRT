@@ -17,6 +17,6 @@ typedef union		u_color
 }					color;
 
 color	color_add(color a, color b);
-color	color_mod(color a, color b);
+color	color_modul(color a, color b);
 color	color_scale(color clr, float intensity);
 #endif

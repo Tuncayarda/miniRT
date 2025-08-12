@@ -24,7 +24,7 @@ BASE_INC_DIRS	= inc $(PATH_LIBFT) $(PATH_GNL) $(PATH_MLX)
 INC_DIRS		= $(addprefix $(PATH_SRC)/,$(SUBDIRS))
 PATH_INCLUDE	= $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
 
-CFLAGS			= -Wall -Wextra -g -fsanitize=address #-Werror
+CFLAGS			= -Wall -Wextra -O3#-Werror
 
 SRCS			= $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 
@@ -37,9 +37,11 @@ UNAME_S			= $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 	PATH_MLX    := $(PATH_MLX_OPENGL)
 	MLX_FLAGS   = -L$(PATH_MLX) -lmlx -framework OpenGL -framework AppKit
+	CFLAGS      += -I/opt/X11/include -I/usr/X11/include
 else ifeq ($(UNAME_S),Linux)
 	PATH_MLX    := $(PATH_MLX_LINUX)
 	MLX_FLAGS   = -L$(PATH_MLX) -lmlx -lXext -lX11 -lm -lz
+	CFLAGS      += -I/usr/include -I/usr/include/X11
 endif
 
 MLX				= $(PATH_MLX)/libmlx.a
