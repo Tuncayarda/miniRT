@@ -98,18 +98,16 @@ static bool	handle_fov(int key, scene *sc)
 int	on_key(int key, void *param)
 {
 	scene	*sc;
-	bool	changed;
 
 	sc = (scene *)param;
-	changed = false;
 	if (handle_move(key, sc))
-		changed = true;
+		recalc_camera(sc);
 	if (handle_vertical(key, sc))
-		changed = true;
+		recalc_camera(sc);
 	if (handle_look(key, sc))
-		changed = true;
+		recalc_camera(sc);
 	if (handle_fov(key, sc))
-		changed = true;
+		recalc_camera(sc);
 	if (key == KEY_R)
 	{
 		reset_scene(sc);
@@ -120,7 +118,5 @@ int	on_key(int key, void *param)
 		gc_manager(NULL, MODE_FREE);
 		exit(0);
 	}
-	if (changed)
-		recalc_camera(sc);
 	return (0);
 }

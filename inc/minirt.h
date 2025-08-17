@@ -1,8 +1,8 @@
 #ifndef __MINI_RT__
 # define __MINI_RT__
 
-# define WIDTH	1280.0f
-# define HEIGHT	720.0f
+# define WIDTH	2048.0f
+# define HEIGHT	1152.0f
 # define ASPECT_RATIO WIDTH / HEIGHT
 # define WORLD_UP (vec3){0, 1, 0}
 

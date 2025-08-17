@@ -46,7 +46,7 @@ endif
 CFLAGS		= -Wall -Wextra -O3 -ffast-math -flto -fno-math-errno -march=native -mtune=native #Werror
 LDFLAGS		= -flto
 
-MLX				= $(PATH_MLX)/libmlx.a
+MLX			= $(PATH_MLX)/libmlx.a
 
 all: $(NAME)
 
