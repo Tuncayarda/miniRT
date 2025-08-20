@@ -8,7 +8,7 @@ ray generate_ray(camera *cam, int x, int y)
 	float	v;
 
 	u = (2.0f * ((x + 0.5f) / WIDTH) - 1.0f) * cam->half_width;
-	v = (1.0f - 2.0f * ((y + 0.5f) / HEIGHT)) * cam->half_height;
+	v = (1.0f - 2.0f * ((y + 0.5f) / HEIGHT)) * cam->half_height; 
 	dir = vec_add3(
 		vec_scale(cam->right, u),
 		vec_scale(cam->up, v),

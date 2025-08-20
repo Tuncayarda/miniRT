@@ -12,6 +12,7 @@ typedef enum		e_ent_type
 	ENT_SPHERE,
 	ENT_PLANE,
 	ENT_CYLINDER,
+	ENT_CIRCLE,
 	ENT_UNKNOWN
 }					ent_type;
 
@@ -93,6 +94,16 @@ typedef struct		s_plane
 	material		mat;
 }					plane;
 
+typedef struct		s_circle
+{
+	vec3			pos;
+	vec3			axis;
+	float			radius;
+	color			color;
+	material		mat;
+}					circle;
+
+
 typedef struct		s_cylinder
 {
 	vec3			pos;
@@ -100,6 +111,8 @@ typedef struct		s_cylinder
 	color			color;
 	float			dia;
 	float			h;
+	circle			top;
+	circle			bottom;
 	material		mat;
 }					cylinder;
 

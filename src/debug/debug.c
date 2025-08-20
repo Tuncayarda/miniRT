@@ -109,6 +109,28 @@ void	print_scene_debug(scene *sc)
 					c->mat.bump_path ? c->mat.bump_path : "(null)",
 					c->mat.bump_strength);
 		}
+		else if (sc->ents[i].type == ENT_CIRCLE)
+		{
+			printf("CIRCLE\n");
+			circle *ci = (circle *)sc->ents[i].ent;
+			printf("    Position: %.2f, %.2f, %.2f\n", ci->pos.x, ci->pos.y, ci->pos.z);
+			printf("    Axis: %.2f, %.2f, %.2f\n", ci->axis.x, ci->axis.y, ci->axis.z);
+			printf("    Radius: %.2f\n", ci->radius);
+			printf("    Specular: strength=%.2f, shininess=%.2f\n",
+				ci->mat.specular_strength, ci->mat.shininess);
+			if (ci->mat.has_checker)
+				printf("    Checker: scale=%.2f, color (R,G,B) = %u, %u, %u\n",
+					ci->mat.checker_scale,
+					ci->mat.checker_color.r, ci->mat.checker_color.g, ci->mat.checker_color.b);
+			if (ci->mat.has_texture)
+				printf("    Texture: path=%s, scale=%.2f\n",
+					ci->mat.texture_path ? ci->mat.texture_path : "(null)",
+					ci->mat.texture_scale);
+			if (ci->mat.has_bump)
+				printf("    Bump Map: path=%s, strength=%.2f\n",
+					ci->mat.bump_path ? ci->mat.bump_path : "(null)",
+					ci->mat.bump_strength);
+		}
 		else
 			printf("UNKNOWN\n");
 	}

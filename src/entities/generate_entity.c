@@ -12,6 +12,8 @@ void	*generate_entity(void *src, ent_type type)
 		size = sizeof(plane);
 	else if (type == ENT_CYLINDER)
 		size = sizeof(cylinder);
+	else if (type == ENT_CIRCLE)
+		size = sizeof(circle);
 	else
 		return (NULL);
 

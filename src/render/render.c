@@ -2,6 +2,7 @@
 
 void	render(scene *sc)
 {
+	#pragma omp parallel for schedule(dynamic, 4)
 	size_t	x;
 	size_t	y;
 	ray		r;

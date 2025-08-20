@@ -4,6 +4,33 @@
 #include "libft.h"
 #include "parser.h"
 
+static void	generate_circles(scene *sc, cylinder *cy)
+{
+	circle	top;
+	circle	bottom;
+
+	ft_memset(&top, 0, sizeof(circle));
+	ft_memset(&bottom, 0, sizeof(circle));
+	if (cy)
+	{
+		top.axis = vec_norm(cy->axis);
+		top.pos = vec_add(cy->pos, vec_scale(vec_norm(cy->axis), cy->h / 2));
+		top.radius = cy->dia / 2;
+		top.mat = cy->mat;
+		top.color = cy->color;
+		cy->top = top;
+		add_entity(sc, generate_entity(&top, ENT_CIRCLE), ENT_CIRCLE);
+
+		bottom.axis = vec_scale(vec_norm(cy->axis), - 1.0f);
+		bottom.pos = vec_sub(cy->pos, vec_scale(vec_norm(cy->axis), cy->h / 2));
+		bottom.radius = cy->dia / 2;
+		bottom.color = cy->color;
+		bottom.mat = cy->mat;
+		cy->bottom = bottom;
+		add_entity(sc, generate_entity(&bottom, ENT_CIRCLE), ENT_CIRCLE);
+	}
+}
+
 void	parse_cylinder(scene *sc, char **args)
 {
 	cylinder	c;
@@ -23,6 +50,7 @@ void	parse_cylinder(scene *sc, char **args)
 		c.color.g = ft_atof(ft_strchr(args[5], ',') + 1);
 		c.color.b = ft_atof(ft_strrchr(args[5], ',') + 1);
 		parse_material(&c.mat, args);
+		generate_circles(sc, &c);
 		add_entity(sc, generate_entity(&c, ENT_CYLINDER), ENT_CYLINDER);
 	}
 	else
