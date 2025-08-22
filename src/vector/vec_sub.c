@@ -1,8 +1,8 @@
 #include "vector.h"
 
-vec3	vec_sub(vec3 a, vec3 b)
+t_vec3	vec_sub(t_vec3 a, t_vec3 b)
 {
-	vec3	result;
+	t_vec3	result;
 
 	result.x = a.x - b.x;
 	result.y = a.y - b.y;

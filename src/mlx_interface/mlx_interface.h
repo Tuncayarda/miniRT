@@ -38,11 +38,11 @@ typedef struct	s_mlx
 	int			endian;
 }				mlx;
 
-void	put_pix(mlx *m, size_t x, size_t y, color color);
+void	put_pix(mlx *m, size_t x, size_t y, t_color color);
 
 void	reset_scene(scene *sc);
 void	recalc_camera(scene *sc);
-vec3	rotate_around_axis(vec3 v, vec3 axis, float angle_rad);
+t_vec3	rotate_around_axis(t_vec3 v, t_vec3 axis, float angle_rad);
 int		on_key(int key, void *param);
 
 #endif

@@ -2,9 +2,7 @@
 #include "libft.h"
 #include "util.h"
 
-#include <stdio.h>
-
-void	parse_amb_light(scene *sc, char **args)
+void	parse_amb_light(t_scene *sc, char **args)
 {
 	if (args && args[0] && args[1] && args[2])
 	{

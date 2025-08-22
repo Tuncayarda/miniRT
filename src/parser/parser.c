@@ -5,9 +5,9 @@
 #include "gc.h"
 #include <fcntl.h>
 
-void	parse_line(scene *sc, char *line)
+void	parse_line(t_scene *sc, char *line)
 {
-	char **args;
+	char	**args;
 
 	if (!line || *line == '\n')
 		return ;
@@ -28,7 +28,7 @@ void	parse_line(scene *sc, char *line)
 		parse_cylinder(sc, args);
 }
 
-void	parse(scene *sc, int fd)
+void	parse(t_scene *sc, int fd)
 {
 	char	*line;
 
@@ -41,7 +41,7 @@ void	parse(scene *sc, int fd)
 	}
 }
 
-void	parser(scene *sc, int ac, char **av)
+void	parser(t_scene *sc, int ac, char **av)
 {
 	int	fd;
 

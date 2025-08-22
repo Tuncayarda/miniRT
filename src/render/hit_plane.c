@@ -4,9 +4,9 @@
 #include "util.h"
 #include "render.h"
 
-bool	hit_plane(plane *pl, ray r, float *t_hit)
+bool	hit_plane(t_plane *pl, ray r, float *t_hit)
 {
-	vec3	n;
+	t_vec3	n;
 	float	denom;
 	float	t;
 

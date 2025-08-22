@@ -1,9 +1,9 @@
 #include <math.h>
 #include "color.h"
 
-color	color_add(color a, color b)
+t_color	color_add(t_color a, t_color b)
 {
-	color	rtn;
+	t_color	rtn;
 
 	rtn.r = fminf(255, a.r + b.r);
 	rtn.g = fminf(255, a.g + b.g);

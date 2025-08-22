@@ -11,7 +11,7 @@ typedef enum e_gc_mode
 	MODE_FREE
 }	t_gc_mode;
 
-typedef struct			s_gc_node
+typedef struct s_gc_node
 {
 	void				*ptr;
 	struct s_gc_node	*next;

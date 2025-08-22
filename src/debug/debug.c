@@ -1,7 +1,7 @@
 #include "minirt.h"
 #include <stdio.h>
 
-void	print_scene_debug(scene *sc)
+void	print_scene_debug(t_scene *sc)
 {
 	printf("Ambient Light:\n");
 	printf("  Ratio: %.2f\n", sc->ambient.ratio);
@@ -44,7 +44,7 @@ void	print_scene_debug(scene *sc)
 		if (sc->ents[i].type == ENT_SPHERE)
 		{
 			printf("SPHERE\n");
-			sphere *s = (sphere *)sc->ents[i].ent;
+			t_sphere *s = (t_sphere *)sc->ents[i].ent;
 			printf("    Position: %.2f, %.2f, %.2f\n", s->pos.x, s->pos.y, s->pos.z);
 			printf("    Diameter: %.2f\n", s->dia);
 			printf("    Color (R,G,B): %u, %u, %u\n", s->color.r, s->color.g, s->color.b);
@@ -66,7 +66,7 @@ void	print_scene_debug(scene *sc)
 		else if (sc->ents[i].type == ENT_PLANE)
 		{
 			printf("PLANE\n");
-			plane *p = (plane *)sc->ents[i].ent;
+			t_plane *p = (t_plane *)sc->ents[i].ent;
 			printf("    Position: %.2f, %.2f, %.2f\n", p->pos.x, p->pos.y, p->pos.z);
 			printf("    Axis: %.2f, %.2f, %.2f\n", p->axis.x, p->axis.y, p->axis.z);
 			printf("    Color (R,G,B): %u, %u, %u\n", p->color.r, p->color.g, p->color.b);
@@ -88,7 +88,7 @@ void	print_scene_debug(scene *sc)
 		else if (sc->ents[i].type == ENT_CYLINDER)
 		{
 			printf("CYLINDER\n");
-			cylinder *c = (cylinder *)sc->ents[i].ent;
+			t_cylinder *c = (t_cylinder *)sc->ents[i].ent;
 			printf("    Position: %.2f, %.2f, %.2f\n", c->pos.x, c->pos.y, c->pos.z);
 			printf("    Axis: %.2f, %.2f, %.2f\n", c->axis.x, c->axis.y, c->axis.z);
 			printf("    Diameter: %.2f\n", c->dia);
@@ -112,7 +112,7 @@ void	print_scene_debug(scene *sc)
 		else if (sc->ents[i].type == ENT_CIRCLE)
 		{
 			printf("CIRCLE\n");
-			circle *ci = (circle *)sc->ents[i].ent;
+			t_circle *ci = (t_circle *)sc->ents[i].ent;
 			printf("    Position: %.2f, %.2f, %.2f\n", ci->pos.x, ci->pos.y, ci->pos.z);
 			printf("    Axis: %.2f, %.2f, %.2f\n", ci->axis.x, ci->axis.y, ci->axis.z);
 			printf("    Radius: %.2f\n", ci->radius);

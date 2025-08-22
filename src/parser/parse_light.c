@@ -4,7 +4,7 @@
 #include "util.h"
 #include "libft.h"
 
-static void	parse_specs(light	*l, char **args)
+static void	parse_specs(t_light	*l, char **args)
 {
 	size_t	i;
 
@@ -29,11 +29,11 @@ static void	parse_specs(light	*l, char **args)
 		l->angle = 30.0f;
 }
 
-void	parse_light(scene *sc, char **args)
+void	parse_light(t_scene *sc, char **args)
 {
-	light	l;
+	t_light	l;
 
-	ft_memset(&l, 0, sizeof(light));
+	ft_memset(&l, 0, sizeof(t_light));
 	if (args && args[0] && args[1] && args[2] && args[3])
 	{
 		l.pos.x = ft_atof(args[1]);

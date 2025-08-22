@@ -1,8 +1,8 @@
 #include "color.h"
 
-color	color_modul(color a, color b)
+t_color	color_modul(t_color a, t_color b)
 {
-	color	rtn;
+	t_color	rtn;
 
 	rtn.r = (a.r * b.r) / 255;
 	rtn.g = (a.g * b.g) / 255;

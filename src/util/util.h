@@ -3,6 +3,6 @@
 
 # include "minirt.h"
 
-void	raise_error(scene *sc, const char *msg);
+void	raise_error(t_scene *sc, const char *msg);
 
 #endif

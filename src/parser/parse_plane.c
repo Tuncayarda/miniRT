@@ -4,11 +4,11 @@
 #include "libft.h"
 #include "parser.h"
 
-void	parse_plane(scene *sc, char **args)
+void	parse_plane(t_scene *sc, char **args)
 {
-	plane	p;
+	t_plane	p;
 
-	ft_memset(&p, 0, sizeof(plane));
+	ft_memset(&p, 0, sizeof(t_plane));
 	if (args && args[0] && args[1] && args[2] && args[3])
 	{
 		p.pos.x = ft_atof(args[1]);

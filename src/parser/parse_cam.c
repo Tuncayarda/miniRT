@@ -4,7 +4,7 @@
 #include "vector.h"
 #include "util.h"
 
-void	parse_cam(scene *sc, char **args)
+void	parse_cam(t_scene *sc, char **args)
 {
 	if (args && args[0] && args[1] && args[2] && args[3])
 	{
@@ -17,9 +17,9 @@ void	parse_cam(scene *sc, char **args)
 		sc->cam.fov = ft_atoi(args[3]);
 		sc->cam.dir = vec_norm(sc->cam.dir);
 		sc->cam.half_height = tanf((sc->cam.fov * M_PI / 180.0f) / 2.0f);
-		sc->cam.half_width  = sc->cam.half_height * ASPECT_RATIO;
-		sc->cam.right = vec_norm(vec_cross(sc->cam.dir, WORLD_UP));
-		sc->cam.up    = vec_norm(vec_cross(sc->cam.right, sc->cam.dir));
+		sc->cam.half_width = sc->cam.half_height * ASPECT_RATIO;
+		sc->cam.right = vec_norm(vec_cross(sc->cam.dir, vec_gen(0, 1, 0)));
+		sc->cam.up = vec_norm(vec_cross(sc->cam.right, sc->cam.dir));
 	}
 	else
 		raise_error(sc, ERROR_MSG_DFL);

@@ -2,7 +2,7 @@
 #include "minirt.h"
 #include "mlx_interface.h"
 
-void	put_pix(mlx *m, size_t x, size_t y, color color)
+void	put_pix(mlx *m, size_t x, size_t y, t_color color)
 {
 	char	*pixel;
 

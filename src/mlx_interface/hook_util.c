@@ -6,14 +6,14 @@
 #include "libft.h"
 #include "parser.h"
 
-vec3	rotate_around_axis(vec3 v, vec3 axis, float angle_rad)
+t_vec3	rotate_around_axis(t_vec3 v, t_vec3 axis, float angle_rad)
 {
-	vec3	k;
+	t_vec3	k;
 	float	c;
 	float	s;
-	vec3	term1;
-	vec3	term2;
-	vec3	term3;
+	t_vec3	term1;
+	t_vec3	term2;
+	t_vec3	term3;
 
 	k = vec_norm(axis);
 	c = cosf(angle_rad);
@@ -27,8 +27,8 @@ vec3	rotate_around_axis(vec3 v, vec3 axis, float angle_rad)
 void	recalc_camera(scene *sc)
 {
 	float	fov_rad;
-	vec3	up_hint;
-	vec3	right;
+	t_vec3	up_hint;
+	t_vec3	right;
 
 	if (sc->cam.fov < 1)
 		sc->cam.fov = 1;
@@ -36,11 +36,11 @@ void	recalc_camera(scene *sc)
 		sc->cam.fov = 170;
 	fov_rad = (float)sc->cam.fov * (M_PI / 180.0f);
 	sc->cam.dir = vec_norm(sc->cam.dir);
-	up_hint = WORLD_UP;
+	up_hint = vec_gen(0, 1, 0);
 	right = vec_cross(sc->cam.dir, up_hint);
 	if (fabsf(right.x) + fabsf(right.y) + fabsf(right.z) < 1e-6f)
 	{
-		up_hint = (vec3){0.0f, 0.0f, 1.0f};
+		up_hint = vec_gen(0, 0, 1);
 		right = vec_cross(sc->cam.dir, up_hint);
 	}
 	sc->cam.right = vec_norm(right);
@@ -49,7 +49,7 @@ void	recalc_camera(scene *sc)
 	sc->cam.half_width = sc->cam.half_height * ASPECT_RATIO;
 }
 
-void reset_scene(scene *sc)
+void reset_scene(t_scene *sc)
 {
 	gc_manager(NULL, MODE_FREE);
 	sc->lights = NULL;

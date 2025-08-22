@@ -1,11 +1,9 @@
-#ifndef __COLOR_H__
-# define __COLOR_H__
+#ifndef COLOR_H
+# define COLOR_H
 
 # include <stdint.h>
 
-# define COLOR_INIT (color){{0, 0, 0}}
-
-typedef union		u_color
+typedef union u_color
 {
 	struct
 	{
@@ -14,9 +12,9 @@ typedef union		u_color
 		__uint8_t	r;
 	};
 	__uint32_t		val;
-}					color;
+}					t_color;
 
-color	color_add(color a, color b);
-color	color_modul(color a, color b);
-color	color_scale(color clr, float intensity);
+t_color	color_add(t_color a, t_color b);
+t_color	color_modul(t_color a, t_color b);
+t_color	color_scale(t_color clr, float intensity);
 #endif

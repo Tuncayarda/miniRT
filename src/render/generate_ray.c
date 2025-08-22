@@ -1,8 +1,8 @@
 #include "render.h"
 
-ray generate_ray(camera *cam, int x, int y)
+ray	generate_ray(t_camera *cam, int x, int y)
 {
-	vec3	dir;
+	t_vec3	dir;
 	ray		r;
 	float	u;
 	float	v;

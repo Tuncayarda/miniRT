@@ -1,23 +1,22 @@
-#ifndef __VECTOR_H__
-# define __VECTOR_H__
+#ifndef VECTOR_H
+# define VECTOR_H
 
-#define VECTOR_INIT (vec3){0, 0, 0}
-
-typedef struct	s_vec3
+typedef struct s_vec3
 {
 	float		x;
 	float		y;
 	float		z;
-}				vec3;
+}				t_vec3;
 
-vec3	vec_add(vec3 a, vec3 b);
-vec3	vec_add3(vec3 a, vec3 b, vec3 c);
-vec3	vec_sub(vec3 a, vec3 b);
-vec3	vec_scale(vec3 v, float s);
-vec3	vec_norm(vec3 v);
-vec3	vec_negate(vec3 v);
-vec3	vec_cross(vec3 a, vec3 b);
-float	vec_dot(vec3 a, vec3 b);
-float	vec_length(vec3 v);
+t_vec3	vec_add(t_vec3 a, t_vec3 b);
+t_vec3	vec_add3(t_vec3 a, t_vec3 b, t_vec3 c);
+t_vec3	vec_sub(t_vec3 a, t_vec3 b);
+t_vec3	vec_scale(t_vec3 v, float s);
+t_vec3	vec_norm(t_vec3 v);
+t_vec3	vec_negate(t_vec3 v);
+t_vec3	vec_cross(t_vec3 a, t_vec3 b);
+t_vec3	vec_gen(float x, float y, float z);
+float	vec_dot(t_vec3 a, t_vec3 b);
+float	vec_length(t_vec3 v);
 
 #endif

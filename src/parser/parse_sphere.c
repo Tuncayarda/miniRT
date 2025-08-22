@@ -4,11 +4,11 @@
 #include "libft.h"
 #include "util.h"
 
-void	parse_sphere(scene *sc, char **args)
+void	parse_sphere(t_scene *sc, char **args)
 {
-	sphere	s;
+	t_sphere	s;
 
-	ft_memset(&s, 0, sizeof(sphere));
+	ft_memset(&s, 0, sizeof(t_sphere));
 	if (args && args[0] && args[1] && args[2] && args[3])
 	{
 		s.pos.x = ft_atof(args[1]);

@@ -4,7 +4,7 @@
 #include "util.h"
 #include "render.h"
 
-bool	hit_cylinder(cylinder *cy, ray r, float *t_hit)
+bool	hit_cylinder(t_cylinder *cy, ray r, float *t_hit)
 {
 	float	a;
 	float	b;
@@ -18,7 +18,7 @@ bool	hit_cylinder(cylinder *cy, ray r, float *t_hit)
 	if (!solve_quadratic(a, b, c, t_hit))
 		return (false);
 
-	vec3 P = vec_add(r.origin, vec_scale(r.direction, *t_hit));
+	t_vec3 P = vec_add(r.origin, vec_scale(r.direction, *t_hit));
 	float s_top = vec_dot(vec_sub(P, cy->top.pos), cy->top.axis);
 	float s_bot = vec_dot(vec_sub(P, cy->bottom.pos), cy->bottom.axis);
 

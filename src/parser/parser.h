@@ -1,17 +1,17 @@
-#ifndef __PARSER_H__
-# define __PARSER_H__
+#ifndef PARSER_H
+# define PARSER_H
 
-#include "minirt.h"
+# include "minirt.h"
 
-void	parser(scene *sc, int ac, char **av);
+void	parser(t_scene *sc, int ac, char **av);
 
-void	parse_amb_light(scene *sc, char **args);
-void	parse_cam(scene *sc, char **args);
-void	parse_light(scene *sc, char **args);
-void	parse_sphere(scene *sc, char **args);
-void	parse_plane(scene *sc, char **args);
-void	parse_cylinder(scene *sc, char **args);
+void	parse_amb_light(t_scene *sc, char **args);
+void	parse_cam(t_scene *sc, char **args);
+void	parse_light(t_scene *sc, char **args);
+void	parse_sphere(t_scene *sc, char **args);
+void	parse_plane(t_scene *sc, char **args);
+void	parse_cylinder(t_scene *sc, char **args);
 
-void	parse_material(material *mat, char **args);
+void	parse_material(t_material *mat, char **args);
 
 #endif

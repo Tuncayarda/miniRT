@@ -3,7 +3,7 @@
 #include "vector.h"
 #include "minirt.h"
 
-static bool	handle_move(int key, scene *sc)
+static bool	handle_move(int key, t_scene *sc)
 {
 	if (key == KEY_W)
 	{
@@ -32,7 +32,7 @@ static bool	handle_move(int key, scene *sc)
 	return (false);
 }
 
-static bool	handle_vertical(int key, scene *sc)
+static bool	handle_vertical(int key, t_scene *sc)
 {
 	if (key == KEY_Z)
 	{
@@ -49,7 +49,7 @@ static bool	handle_vertical(int key, scene *sc)
 	return (false);
 }
 
-static bool	handle_look(int key, scene *sc)
+static bool	handle_look(int key, t_scene *sc)
 {
 	float	step;
 
@@ -78,7 +78,7 @@ static bool	handle_look(int key, scene *sc)
 	return (false);
 }
 
-static bool	handle_fov(int key, scene *sc)
+static bool	handle_fov(int key, t_scene *sc)
 {
 	if (key == KEY_K)
 	{
@@ -97,9 +97,9 @@ static bool	handle_fov(int key, scene *sc)
 
 int	on_key(int key, void *param)
 {
-	scene	*sc;
+	t_scene	*sc;
 
-	sc = (scene *)param;
+	sc = (t_scene *)param;
 	if (handle_move(key, sc))
 		recalc_camera(sc);
 	if (handle_vertical(key, sc))

@@ -1,8 +1,8 @@
 #include "color.h"
 
-color	color_scale(color clr, float intensity)
+t_color	color_scale(t_color clr, float intensity)
 {
-	color	rtn;
+	t_color	rtn;
 
 	rtn.r = clr.r * intensity;
 	rtn.g = clr.g * intensity;

@@ -4,13 +4,13 @@
 #include "libft.h"
 #include "parser.h"
 
-static void	generate_circles(scene *sc, cylinder *cy)
+static void	generate_circles(t_scene *sc, t_cylinder *cy)
 {
-	circle	top;
-	circle	bottom;
+	t_circle	top;
+	t_circle	bottom;
 
-	ft_memset(&top, 0, sizeof(circle));
-	ft_memset(&bottom, 0, sizeof(circle));
+	ft_memset(&top, 0, sizeof(t_circle));
+	ft_memset(&bottom, 0, sizeof(t_circle));
 	if (cy)
 	{
 		top.axis = vec_norm(cy->axis);
@@ -20,8 +20,7 @@ static void	generate_circles(scene *sc, cylinder *cy)
 		top.color = cy->color;
 		cy->top = top;
 		add_entity(sc, generate_entity(&top, ENT_CIRCLE), ENT_CIRCLE);
-
-		bottom.axis = vec_scale(vec_norm(cy->axis), - 1.0f);
+		bottom.axis = vec_scale(vec_norm(cy->axis), -1.0f);
 		bottom.pos = vec_sub(cy->pos, vec_scale(vec_norm(cy->axis), cy->h / 2));
 		bottom.radius = cy->dia / 2;
 		bottom.color = cy->color;
@@ -31,11 +30,11 @@ static void	generate_circles(scene *sc, cylinder *cy)
 	}
 }
 
-void	parse_cylinder(scene *sc, char **args)
+void	parse_cylinder(t_scene *sc, char **args)
 {
-	cylinder	c;
+	t_cylinder	c;
 
-	ft_memset(&c, 0, sizeof(cylinder));
+	ft_memset(&c, 0, sizeof(t_cylinder));
 	if (args && args[0] && args[1] && args[2] && args[3] && args[4] && args[5])
 	{
 		c.pos.x = ft_atof(args[1]);

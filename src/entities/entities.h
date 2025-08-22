@@ -1,20 +1,19 @@
-#ifndef __ENTITIES_H__
-# define __ENTITIES_H__
+#ifndef ENTITIES_H
+# define ENTITIES_H
 
 # include <stdlib.h>
 # include <stdbool.h>
 # include "vector.h"
 # include "color.h"
 
-
-typedef enum		e_ent_type
+typedef enum e_ent_type
 {
 	ENT_SPHERE,
 	ENT_PLANE,
 	ENT_CYLINDER,
 	ENT_CIRCLE,
 	ENT_UNKNOWN
-}					ent_type;
+}					t_ent_type;
 
 typedef struct s_material
 {
@@ -23,104 +22,103 @@ typedef struct s_material
 	bool			has_texture;
 	bool			has_bump;
 
-	float			specular_strength;   // Intensity of specular reflection (spc:x)
-	float			shininess;           // Shininess factor controlling specular spread (spc:y)
+	float			specular_strength;
+	float			shininess;
 
-	color			checker_color;       // Base color used for checker pattern (if enabled)
-	float			checker_scale;       // Scale of the checker pattern (pat:x)
+	t_color			checker_color;
+	float			checker_scale;
 
-	float			texture_scale;       // Scale/repetition factor for texture (txm:scale)
-	float			bump_strength;       // Strength/depth of bump effect (bum:scale)
+	float			texture_scale;
+	float			bump_strength;
 
-	char			*texture_path;       // File path to texture map (txm)
-	void			*texture_img;        // Pointer to loaded texture image
-	
-	char			*bump_path;          // File path to bump map (bum)
-	void			*bump_img;           // Pointer to loaded bump image
-}					material;
+	char			*texture_path;
+	void			*texture_img;
 
-typedef struct		s_entity
+	char			*bump_path;
+	void			*bump_img;
+}					t_material;
+
+typedef struct s_entity
 {
-	ent_type		type;
+	t_ent_type		type;
 	void			*ent;
-}					entity;
+}					t_entity;
 
-typedef struct		s_ambient_light
+typedef struct s_ambient_light
 {
 	float			ratio;
-	color			color;
-}					ambient_light;
+	t_color			color;
+}					t_ambient_light;
 
-typedef struct		s_camera
+typedef struct s_camera
 {
-	vec3			pos;
-	vec3			dir;
+	t_vec3			pos;
+	t_vec3			dir;
 	__uint8_t		fov;
 	float			half_height;
 	float			half_width;
-	vec3			right;
-	vec3			up;
-}					camera;
+	t_vec3			right;
+	t_vec3			up;
+}					t_camera;
 
-typedef enum		e_light_type
+typedef enum e_light_type
 {
 	LIGHT_POINT,
 	LIGHT_SPOT,
 }					t_light_type;
 
-typedef struct		s_light
+typedef struct s_light
 {
-	vec3			pos;
-	color			color;
+	t_vec3			pos;
+	t_color			color;
 	float			ratio;
 	t_light_type	type;
-	vec3			dir;
+	t_vec3			dir;
 	float			angle;
-}					light;
+}					t_light;
 
-typedef struct		s_sphere
+typedef struct s_sphere
 {
-	color			color;
+	t_color			color;
 	float			dia;
-	vec3			pos;
-	material		mat;
-}					sphere;
+	t_vec3			pos;
+	t_material		mat;
+}					t_sphere;
 
-typedef struct		s_plane
+typedef struct s_plane
 {
-	vec3			pos;
-	vec3			axis;
-	color			color;
-	material		mat;
-}					plane;
+	t_vec3			pos;
+	t_vec3			axis;
+	t_color			color;
+	t_material		mat;
+}					t_plane;
 
-typedef struct		s_circle
+typedef struct s_circle
 {
-	vec3			pos;
-	vec3			axis;
+	t_vec3			pos;
+	t_vec3			axis;
 	float			radius;
-	color			color;
-	material		mat;
-}					circle;
+	t_color			color;
+	t_material		mat;
+}					t_circle;
 
-
-typedef struct		s_cylinder
+typedef struct s_cylinder
 {
-	vec3			pos;
-	vec3			axis;
-	color			color;
+	t_vec3			pos;
+	t_vec3			axis;
+	t_color			color;
 	float			dia;
 	float			h;
-	circle			top;
-	circle			bottom;
-	material		mat;
-}					cylinder;
+	t_circle		top;
+	t_circle		bottom;
+	t_material		mat;
+}					t_cylinder;
 
-void	*generate_entity(void *src, ent_type type);
+void	*generate_entity(void *src, t_ent_type type);
 
-typedef struct	s_scene scene;
+typedef struct s_scene	t_scene;
 
-void	add_light(scene *sc, light l);
-void	add_entity(scene *sc, void *ent, ent_type type);
+void	add_light(t_scene *sc, t_light l);
+void	add_entity(t_scene *sc, void *ent, t_ent_type type);
 
 #endif
