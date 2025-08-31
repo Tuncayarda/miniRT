@@ -2,7 +2,7 @@
 #include "render.h"
 #include "entities.h"
 
-bool	hit_sphere(t_sphere *s, ray r, float *t_hit)
+bool	hit_sphere(t_sphere *s, t_ray r, float *t_hit)
 {
 	t_vec3	oc;
 	float	radius;

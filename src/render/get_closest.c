@@ -1,9 +1,9 @@
 #include <math.h>
 #include "render.h"
 
-bool	get_closest(t_scene *sc, trace_var *var, ray r)
+bool	get_closest(t_scene *sc, t_trace_var *var, t_ray r)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	var->type = ENT_UNKNOWN;
@@ -13,9 +13,9 @@ bool	get_closest(t_scene *sc, trace_var *var, ray r)
 	{
 		if (check_hit(sc, var, r, i))
 		{
-				var->closest_t = var->t;
-				var->closest_i = i;
-				var->type = sc->ents[i].type;
+			var->closest_t = var->t;
+			var->closest_i = i;
+			var->type = sc->ents[i].type;
 		}
 		i++;
 	}

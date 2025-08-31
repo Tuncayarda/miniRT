@@ -1,7 +1,7 @@
 #include <math.h>
 #include "render.h"
 
-static bool	is_blocked(t_scene *sc, ray sray, float l_dist, size_t ignore_i)
+static bool	is_blocked(t_scene *sc, t_ray sray, float l_dist, size_t ignore_i)
 {
 	size_t	i;
 	float	t;
@@ -29,11 +29,11 @@ static bool	is_blocked(t_scene *sc, ray sray, float l_dist, size_t ignore_i)
 	return (false);
 }
 
-static bool	is_reachable(t_scene *sc, trace_var *var, size_t i)
+static bool	is_reachable(t_scene *sc, t_trace_var *var, size_t i)
 {
 	t_vec3	to_light;
 	float	l_dist;
-	ray		sray;
+	t_ray	sray;
 
 	to_light = vec_sub(sc->lights[i].pos, var->hit_p);
 	l_dist = vec_length(to_light);
@@ -45,7 +45,7 @@ static bool	is_reachable(t_scene *sc, trace_var *var, size_t i)
 	return (true);
 }
 
-void	compute_diffuse(t_scene *sc, trace_var *var)
+void	compute_diffuse(t_scene *sc, t_trace_var *var)
 {
 	size_t	i;
 

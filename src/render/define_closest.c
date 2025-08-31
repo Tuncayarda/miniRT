@@ -1,6 +1,6 @@
 #include "render.h"
 
-static void	define_sphere(t_scene *sc, trace_var *var)
+static void	define_sphere(t_scene *sc, t_trace_var *var)
 {
 	var->sp = (t_sphere *)sc->ents[var->closest_i].ent;
 	var->normal = vec_norm(vec_sub(var->hit_p, var->sp->pos));
@@ -8,7 +8,7 @@ static void	define_sphere(t_scene *sc, trace_var *var)
 	var->mat = var->sp->mat;
 }
 
-static void	define_plane(t_scene *sc, trace_var *var, ray r)
+static void	define_plane(t_scene *sc, t_trace_var *var, t_ray r)
 {
 	var->pl = (t_plane *)sc->ents[var->closest_i].ent;
 	var->normal = vec_norm(var->pl->axis);
@@ -18,7 +18,7 @@ static void	define_plane(t_scene *sc, trace_var *var, ray r)
 	var->mat = var->pl->mat;
 }
 
-static void	define_cylinder(t_scene *sc, trace_var *var, ray r)
+static void	define_cylinder(t_scene *sc, t_trace_var *var, t_ray r)
 {
 	t_vec3	q;
 	t_vec3	normal;
@@ -37,7 +37,7 @@ static void	define_cylinder(t_scene *sc, trace_var *var, ray r)
 	var->mat = var->cy->mat;
 }
 
-static void	define_circle(t_scene *sc, trace_var *var, ray r)
+static void	define_circle(t_scene *sc, t_trace_var *var, t_ray r)
 {
 	var->c = (t_circle *)sc->ents[var->closest_i].ent;
 	var->normal = vec_norm(var->c->axis);
@@ -47,7 +47,7 @@ static void	define_circle(t_scene *sc, trace_var *var, ray r)
 	var->mat = var->c->mat;
 }
 
-void	define_closest(t_scene *sc, trace_var	*var, ray r)
+void	define_closest(t_scene *sc, t_trace_var	*var, t_ray r)
 {
 	var->hit_p = vec_add(r.origin, vec_scale(r.direction, var->closest_t));
 	if (var->type == ENT_SPHERE)

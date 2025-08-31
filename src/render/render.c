@@ -4,7 +4,7 @@ void	render(t_scene *sc)
 {
 	size_t	x;
 	size_t	y;
-	ray		r;
+	t_ray	r;
 
 	y = 0;
 	while (y < HEIGHT)

@@ -1,6 +1,6 @@
 #include "render.h"
 
-bool	check_hit(t_scene *sc, trace_var *var, ray r, size_t i)
+bool	check_hit(t_scene *sc, t_trace_var *var, t_ray r, size_t i)
 {
 	if ((sc->ents[i].type == ENT_SPHERE
 			&& hit_sphere(sc->ents[i].ent, r, &var->t)

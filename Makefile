@@ -44,6 +44,7 @@ else ifeq ($(UNAME_S),Linux)
 endif
 
 CFLAGS		= -Wall -Wextra -O3 -ffast-math -flto -fno-math-errno -march=native -mtune=native #Werror
+LDFLAGS		= -flto
 
 MLX			= $(PATH_MLX)/libmlx.a
 

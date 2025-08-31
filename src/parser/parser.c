@@ -9,7 +9,7 @@ void	parse_line(t_scene *sc, char *line)
 {
 	char	**args;
 
-	if (!line || *line == '\n')
+	if (!line || *line == '\n' || *line == '#')
 		return ;
 	args = gc_manager(ft_split(line, '\t'), MODE_ADD_ARR);
 	if (!args || !args[0])
