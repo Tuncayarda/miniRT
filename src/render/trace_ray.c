@@ -14,6 +14,7 @@ t_color	trace_ray(t_scene *sc, t_ray r)
 	if (!get_closest(sc, &var, r))
 		return (color_scale(sc->ambient.color, sc->ambient.ratio));
 	define_closest(sc, &var, r);
+	compute_checker(sc, &var);
 	compute_diffuse(sc, &var);
 	if (var.mat.has_spc)
 		compute_specular(sc, &var, r);

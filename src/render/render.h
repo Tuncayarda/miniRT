@@ -52,6 +52,15 @@ typedef struct s_trace_var
 	t_color		specular;
 	t_color		total_specular;
 	t_spc_var	spc;
+
+	t_vec3		local;
+	t_vec3		ref_axis;
+	t_vec3		tan;
+	t_vec3		bitan;
+	float		u;
+	float		v;
+	int			iu;
+	int			iv;
 }				t_trace_var;
 
 void	render(scene *sc);
@@ -71,5 +80,6 @@ bool	get_closest(scene *sc, t_trace_var *var, t_ray r);
 void	define_closest(scene *sc, t_trace_var	*var, t_ray r);
 void	compute_diffuse(scene *sc, t_trace_var *var);
 void	compute_specular(t_scene *sc, t_trace_var *var, t_ray r);
+void	compute_checker(t_scene *sc, t_trace_var *var);
 
 #endif

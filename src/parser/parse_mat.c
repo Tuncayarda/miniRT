@@ -13,8 +13,8 @@ static void	parse_che(t_material *mat, char **args, size_t i)
 {
 	mat->has_checker = true;
 	mat->checker_scale = ft_atof(ft_strrchr(args[i], ':') + 1);
-	mat->checker_color.r = ft_atof(args[i] + 4);
-	mat->checker_color.g = ft_atoi(ft_strchr(args[i] + 4, ',') + 1);
+	mat->checker_color.r = ft_atoi(ft_strchr(args[i] + 4, ',') + 1);
+	mat->checker_color.g = ft_atoi(ft_strchr(ft_strchr(args[i] + 4, ',')+ 1, ',') + 1);
 	mat->checker_color.b = ft_atoi(ft_strrchr(args[i], ',') + 1);
 }
 

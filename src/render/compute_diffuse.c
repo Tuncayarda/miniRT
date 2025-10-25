@@ -14,13 +14,13 @@ static bool	is_blocked(t_scene *sc, t_ray sray, float l_dist, size_t ignore_i)
 			i++;
 			continue ;
 		}
-		if (((sc->ents->type == ENT_SPHERE
+		if (((sc->ents[i].type == ENT_SPHERE
 					&& hit_sphere(sc->ents[i].ent, sray, &t))
-				|| (sc->ents->type == ENT_CYLINDER
+				|| (sc->ents[i].type == ENT_CYLINDER
 					&& hit_cylinder(sc->ents[i].ent, sray, &t))
-				|| (sc->ents->type == ENT_CIRCLE
+				|| (sc->ents[i].type == ENT_CIRCLE
 					&& hit_circle(sc->ents[i].ent, sray, &t))
-				|| (sc->ents->type == ENT_PLANE
+				|| (sc->ents[i].type == ENT_PLANE
 					&& hit_plane(sc->ents[i].ent, sray, &t)))
 			&& (t > SHADOW_BIAS && t < l_dist))
 			return (true);

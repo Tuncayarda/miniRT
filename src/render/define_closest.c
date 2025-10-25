@@ -4,8 +4,8 @@ static void	define_sphere(t_scene *sc, t_trace_var *var)
 {
 	var->sp = (t_sphere *)sc->ents[var->closest_i].ent;
 	var->normal = vec_norm(vec_sub(var->hit_p, var->sp->pos));
-	var->base = var->sp->color;
 	var->mat = var->sp->mat;
+	var->base = var->sp->color;
 }
 
 static void	define_plane(t_scene *sc, t_trace_var *var, t_ray r)
@@ -14,8 +14,8 @@ static void	define_plane(t_scene *sc, t_trace_var *var, t_ray r)
 	var->normal = vec_norm(var->pl->axis);
 	if (vec_dot(var->normal, vec_scale(r.direction, -1.0f)) < 0.0f)
 		var->normal = vec_scale(var->normal, -1.0f);
-	var->base = var->pl->color;
 	var->mat = var->pl->mat;
+	var->base = var->pl->color;
 }
 
 static void	define_cylinder(t_scene *sc, t_trace_var *var, t_ray r)
