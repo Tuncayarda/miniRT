@@ -43,12 +43,29 @@ else ifeq ($(UNAME_S),Linux)
 	CFLAGS      += -I/usr/include -I/usr/include/X11
 endif
 
-CFLAGS		= -Wall -Wextra -O3 -ffast-math -flto -fno-math-errno -march=native -mtune=native #Werror
-LDFLAGS		= -flto
+REL_FLAGS  := -O3 -ffast-math -flto -fno-math-errno -march=native -mtune=native
+DBG_FLAGS  := -O0 -g3
+ASAN_FLAGS := -fsanitize=address -fno-omit-frame-pointer
+
+CFLAGS     = -Wall -Wextra $(REL_FLAGS)
+LDFLAGS    = -flto
+
+ifeq ($(ASAN),1)
+  CFLAGS   = -Wall -Wextra $(DBG_FLAGS) $(ASAN_FLAGS)
+  LDFLAGS  = $(ASAN_FLAGS)
+endif
 
 MLX			= $(PATH_MLX)/libmlx.a
 
 all: $(NAME)
+
+debug:
+	@$(MAKE) clean
+	@$(MAKE) ASAN=1
+
+release:
+	@$(MAKE) clean
+	@$(MAKE)
 
 $(LIBFT):
 	@echo ">> Building libft"

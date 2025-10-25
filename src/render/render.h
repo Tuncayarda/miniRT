@@ -57,6 +57,7 @@ typedef struct s_trace_var
 	t_vec3		ref_axis;
 	t_vec3		tan;
 	t_vec3		bitan;
+	t_vec3		radial;
 	float		u;
 	float		v;
 	int			iu;
