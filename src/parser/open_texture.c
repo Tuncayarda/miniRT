@@ -22,7 +22,5 @@ bool	open_texture(t_scene *sc, t_material *mat)
 	);
 	if (!mat->tex_addr)
 		return (false);
-	if (mat->texture_scale <= 0.0f)
-		mat->texture_scale = 1.0f;
 	return (true);
 }

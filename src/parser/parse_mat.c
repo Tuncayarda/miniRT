@@ -24,7 +24,6 @@ static void	parse_tex(t_material *mat, char **args, size_t i)
 	mat->texture_path = gc_manager(ft_substr(args[i],
 				4, ft_strlen(args[i] + 4)
 				- ft_strlen(ft_strrchr(args[i], ','))), MODE_ADD);
-	mat->texture_scale = ft_atof(ft_strrchr(args[i], ',') + 1);
 }
 
 static void	parse_bum(t_material *mat, char **args, size_t i)

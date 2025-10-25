@@ -55,9 +55,8 @@ void	print_scene_debug(t_scene *sc)
 					s->mat.checker_scale,
 					s->mat.checker_color.r, s->mat.checker_color.g, s->mat.checker_color.b);
 			if (s->mat.has_texture)
-				printf("    Texture: path=%s, scale=%.2f\n",
-					s->mat.texture_path ? s->mat.texture_path : "(null)",
-					s->mat.texture_scale);
+				printf("    Texture: path=%s\n",
+					s->mat.texture_path ? s->mat.texture_path : "(null)");
 			if (s->mat.has_bump)
 				printf("    Bump Map: path=%s, strength=%.2f\n",
 					s->mat.bump_path ? s->mat.bump_path : "(null)",
@@ -77,9 +76,8 @@ void	print_scene_debug(t_scene *sc)
 					p->mat.checker_scale,
 					p->mat.checker_color.r, p->mat.checker_color.g, p->mat.checker_color.b);
 			if (p->mat.has_texture)
-				printf("    Texture: path=%s, scale=%.2f\n",
-					p->mat.texture_path ? p->mat.texture_path : "(null)",
-					p->mat.texture_scale);
+				printf("    Texture: path=%s\n",
+					p->mat.texture_path ? p->mat.texture_path : "(null)");
 			if (p->mat.has_bump)
 				printf("    Bump Map: path=%s, strength=%.2f\n",
 					p->mat.bump_path ? p->mat.bump_path : "(null)",
@@ -101,9 +99,8 @@ void	print_scene_debug(t_scene *sc)
 					c->mat.checker_scale,
 					c->mat.checker_color.r, c->mat.checker_color.g, c->mat.checker_color.b);
 			if (c->mat.has_texture)
-				printf("    Texture: path=%s, scale=%.2f\n",
-					c->mat.texture_path ? c->mat.texture_path : "(null)",
-					c->mat.texture_scale);
+				printf("    Texture: path=%s\n",
+					c->mat.texture_path ? c->mat.texture_path : "(null)");
 			if (c->mat.has_bump)
 				printf("    Bump Map: path=%s, strength=%.2f\n",
 					c->mat.bump_path ? c->mat.bump_path : "(null)",
@@ -123,9 +120,8 @@ void	print_scene_debug(t_scene *sc)
 					ci->mat.checker_scale,
 					ci->mat.checker_color.r, ci->mat.checker_color.g, ci->mat.checker_color.b);
 			if (ci->mat.has_texture)
-				printf("    Texture: path=%s, scale=%.2f\n",
-					ci->mat.texture_path ? ci->mat.texture_path : "(null)",
-					ci->mat.texture_scale);
+				printf("    Texture: path=%s\n",
+					ci->mat.texture_path ? ci->mat.texture_path : "(null)");
 			if (ci->mat.has_bump)
 				printf("    Bump Map: path=%s, strength=%.2f\n",
 					ci->mat.bump_path ? ci->mat.bump_path : "(null)",

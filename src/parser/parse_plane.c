@@ -21,6 +21,8 @@ void	parse_plane(t_scene *sc, char **args)
 		p.color.g = ft_atof(ft_strchr(args[3], ',') + 1);
 		p.color.b = ft_atof(ft_strrchr(args[3], ',') + 1);
 		parse_material(&p.mat, args);
+		if (p.mat.has_texture && !open_texture(sc, &p.mat))
+			raise_error(sc, "plane: texture open failed");
 		add_entity(sc, generate_entity(&p, ENT_PLANE), ENT_PLANE);
 	}
 	else

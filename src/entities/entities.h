@@ -28,7 +28,6 @@ typedef struct s_material
 	t_color			checker_color;
 	float			checker_scale;
 
-	float			texture_scale;
 	float			bump_strength;
 
 	int				tex_width;
