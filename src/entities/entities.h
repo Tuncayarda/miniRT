@@ -31,6 +31,13 @@ typedef struct s_material
 	float			texture_scale;
 	float			bump_strength;
 
+	int				tex_width;
+	int				tex_height;
+	int				tex_bpp;
+	int				tex_line_len;
+	int				tex_endian;
+	char			*tex_addr;
+
 	char			*texture_path;
 	void			*texture_img;
 

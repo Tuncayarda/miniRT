@@ -19,6 +19,8 @@ void	parse_sphere(t_scene *sc, char **args)
 		s.color.g = ft_atof(ft_strchr(args[3], ',') + 1);
 		s.color.b = ft_atof(ft_strrchr(args[3], ',') + 1);
 		parse_material(&s.mat, args);
+		if (s.mat.has_texture && !open_texture(sc, &s.mat))
+			raise_error(sc, "sphere: texture open failed");
 		add_entity(sc, generate_entity(&s, ENT_SPHERE), ENT_SPHERE);
 	}
 	else
