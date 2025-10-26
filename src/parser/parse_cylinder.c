@@ -49,6 +49,8 @@ void	parse_cylinder(t_scene *sc, char **args)
 		c.color.g = ft_atof(ft_strchr(args[5], ',') + 1);
 		c.color.b = ft_atof(ft_strrchr(args[5], ',') + 1);
 		parse_material(&c.mat, args);
+		if (c.mat.has_texture && !open_texture(sc, &c.mat))
+			raise_error(sc, "cylinder: texture open failed");
 		generate_circles(sc, &c);
 		add_entity(sc, generate_entity(&c, ENT_CYLINDER), ENT_CYLINDER);
 	}

@@ -81,6 +81,7 @@ bool	get_closest(scene *sc, t_trace_var *var, t_ray r);
 void	define_closest(scene *sc, t_trace_var	*var, t_ray r);
 void	compute_diffuse(scene *sc, t_trace_var *var);
 void	compute_specular(t_scene *sc, t_trace_var *var, t_ray r);
+void	compute_uv(t_scene *sc, t_trace_var *var);
 void	compute_checker(t_scene *sc, t_trace_var *var);
 void	compute_texture(t_scene *sc, t_trace_var *var);
 
