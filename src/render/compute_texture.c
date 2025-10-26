@@ -19,7 +19,7 @@ static t_color get_texture_color(t_trace_var *var)
 	if (var->iu >= var->mat.tex_width) 
 		var->iu = var->mat.tex_width  - 1;
 	if (var->iv < 0)
-		var->iv = 0;
+		var->iv  = 0;
 	if (var->iv >= var->mat.tex_height)
 		var->iv = var->mat.tex_height - 1;
 	bpp_bytes = var->mat.tex_bpp / 8;

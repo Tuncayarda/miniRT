@@ -29,10 +29,7 @@ static void	parse_tex(t_material *mat, char **args, size_t i)
 static void	parse_bum(t_material *mat, char **args, size_t i)
 {
 	mat->has_bump = true;
-	mat->bump_path = gc_manager(ft_substr(args[i],
-				4, ft_strlen(args[i] + 4)
-				- ft_strlen(ft_strrchr(args[i], ','))), MODE_ADD);
-	mat->bump_strength = ft_atof(ft_strrchr(args[i], ',') + 1);
+	mat->bump_strength = ft_atof(ft_strchr(args[i], ':') + 1);
 }
 
 void	parse_material(t_material *mat, char **args)

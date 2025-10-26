@@ -1,8 +1,8 @@
 #ifndef __MINI_RT__
 # define __MINI_RT__
 
-# define WIDTH	2440.0f
-# define HEIGHT	1480.0f
+# define WIDTH	1280.0f
+# define HEIGHT	720.0f
 # define ASPECT_RATIO WIDTH / HEIGHT
 
 # define ERROR_MSG_DFL "Error\n"
