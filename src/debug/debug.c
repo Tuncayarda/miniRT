@@ -24,17 +24,7 @@ void	print_scene_debug(t_scene *sc)
 			sc->lights[i].pos.x, sc->lights[i].pos.y, sc->lights[i].pos.z,
 			sc->lights[i].ratio,
 			sc->lights[i].color.r, sc->lights[i].color.g, sc->lights[i].color.b);
-		if (sc->lights[i].type == LIGHT_SPOT)
-		{
-			printf("  Type: SPOT\n");
-			printf("  Direction: %.2f, %.2f, %.2f\n",
-				sc->lights[i].dir.x, sc->lights[i].dir.y, sc->lights[i].dir.z);
-			printf("  Angle: %.2f\n", sc->lights[i].angle);
-		}
-		else
-		{
 			printf("  Type: POINT\n");
-		}
 	}
 
 	printf("\nEntities (%zu total):\n", sc->ent_count);

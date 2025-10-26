@@ -5,6 +5,8 @@
 #include "color.h"
 #include "libft.h"
 
+t_color sample_skybox(t_scene *sc, t_ray ray);
+
 t_color	trace_ray(t_scene *sc, t_ray r)
 {
 	t_trace_var	var;
@@ -12,7 +14,12 @@ t_color	trace_ray(t_scene *sc, t_ray r)
 	ft_bzero(&var.total_diffuse, sizeof(t_color));
 	ft_bzero(&var.total_specular, sizeof(t_color));
 	if (!get_closest(sc, &var, r))
-		return (color_scale(sc->ambient.color, sc->ambient.ratio));
+	{
+		if (sc->sky.has_skybox)
+			return (sample_skybox(sc, r));
+		else
+			return (color_scale(sc->ambient.color, sc->ambient.ratio));
+	}
 	define_closest(sc, &var, r);
 	compute_texture(sc, &var);
 	compute_checker(sc, &var);

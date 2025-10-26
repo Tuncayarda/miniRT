@@ -46,7 +46,7 @@ static int	render_loop(void *param)
 int	main(int ac, char **av)
 {
 	t_scene sc;
-	ft_memset(&sc,0,sizeof(t_scene));
+	ft_memset(&sc, 0, sizeof(t_scene));
 	init_mlx(&sc.mlx);
 	sc.av = av;
 	parser(&sc, ac, av);

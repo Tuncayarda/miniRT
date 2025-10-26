@@ -84,5 +84,6 @@ void	compute_specular(t_scene *sc, t_trace_var *var, t_ray r);
 void	compute_uv(t_scene *sc, t_trace_var *var);
 void	compute_checker(t_scene *sc, t_trace_var *var);
 void	compute_texture(t_scene *sc, t_trace_var *var);
+bool	is_reachable(t_scene *sc, t_trace_var *var, size_t i);
 
 #endif

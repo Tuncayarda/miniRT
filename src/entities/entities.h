@@ -67,20 +67,11 @@ typedef struct s_camera
 	t_vec3			up;
 }					t_camera;
 
-typedef enum e_light_type
-{
-	LIGHT_POINT,
-	LIGHT_SPOT,
-}					t_light_type; //will be deleted
-
 typedef struct s_light
 {
 	t_vec3			pos;
 	t_color			color;
 	float			ratio;
-	t_light_type	type; //will be deleted
-	t_vec3			dir; //will be deleted
-	float			angle;  //will be deleted
 }					t_light;
 
 typedef struct s_sphere

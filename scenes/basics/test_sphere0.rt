@@ -3,4 +3,4 @@ A 0.3 255,255,255
 L 0,60,-15 0.75 255,255,255
 C 0,0,0 0,0,-1 60
 
-sp 0,0,-15 10 100,255,100 tex:textures/seamless_texture_0.xpm
+sp 0,0,-15 10 100,255,100 tex:textures/world_map.xpm

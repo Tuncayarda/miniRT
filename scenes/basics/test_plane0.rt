@@ -1,6 +1,9 @@
 #simple plane
 A 0.15 255,255,255
-L 0,0,0 0.5 255,255,255
+L 50,0,-20 0.5 255,255,255
 C 0,0,0 0,0,-1 60
+SB tex:textures/blue_nebula.xpm 
 
-pl 0,-5,0 0,1,0 100,255,100 tex:textures/seamless_texture_0.xpm
+#pl 0,-5,0 0,1,0 100,255,100 tex:textures/seamless_texture_0.xpm 
+sp 0,0,-20 12 100,255,100 tex:textures/world_map.xpm spc:0.5,60 
+sp 20,0,-20 2 100,255,100 tex:textures/moon_map.xpm spc:0.5,60 
