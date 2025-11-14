@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:23:47 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 19:00:40 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 19:27:38 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@ t_vec3	rotate_around_axis(t_vec3 v, t_vec3 axis, float angle_rad)
 	t_vec3	k;
 	float	c;
 	float	s;
-	t_vec3	term1;
 	t_vec3	term2;
 	t_vec3	term3;
 
 	k = vec_norm(axis);
 	c = cosf(angle_rad);
 	s = sinf(angle_rad);
-	term1 = vec_scale(v, c);
 	term2 = vec_scale(vec_cross(k, v), s);
 	term3 = vec_scale(k, vec_dot(k, v) * (1.0f - c));
-	return (vec_add(vec_add(term1, term2), term3));
+	return (vec_add(vec_add(vec_scale(v, c), term2), term3));
 }
 
 void	recalc_camera(t_scene *sc)
@@ -58,7 +56,7 @@ void	recalc_camera(t_scene *sc)
 	sc->cam.right = vec_norm(right);
 	sc->cam.up = vec_norm(vec_cross(sc->cam.right, sc->cam.dir));
 	sc->cam.half_height = tanf(fov_rad * 0.5f);
-	sc->cam.half_width = sc->cam.half_height * ASPECT_RATIO;
+	sc->cam.half_width = sc->cam.half_height * WIDTH / HEIGHT;
 }
 
 void	reset_scene(t_scene *sc)

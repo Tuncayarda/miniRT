@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:24:07 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:24:08 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 19:27:19 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parse_cam(t_scene *sc, char **args)
 		sc->cam.fov = ft_atoi(args[3]);
 		sc->cam.dir = vec_norm(sc->cam.dir);
 		sc->cam.half_height = tanf((sc->cam.fov * M_PI / 180.0f) / 2.0f);
-		sc->cam.half_width = sc->cam.half_height * ASPECT_RATIO;
+		sc->cam.half_width = sc->cam.half_height * WIDTH / HEIGHT;
 		sc->cam.right = vec_norm(vec_cross(sc->cam.dir, vec_gen(0, 1, 0)));
 		sc->cam.up = vec_norm(vec_cross(sc->cam.right, sc->cam.dir));
 	}
