@@ -3,7 +3,7 @@ NAME			= miniRT
 PATH_SRC		= src
 PATH_OBJ		= obj
 
-SUBDIRS			=  _gc vector parser entities util debug mlx_interface render color
+SUBDIRS			=  _gc vector parser entities util mlx_interface render color
 
 PATH_LIBS		= libs
 
