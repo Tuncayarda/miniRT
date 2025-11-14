@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_circle.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:25:45 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 18:38:58 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "entities.h"
 #include "vector.h"
@@ -17,7 +29,7 @@ bool	hit_circle(t_circle *c, t_ray r, float *t_hit)
 	if (fabs(denom) < EPSILON)
 		return (false);
 	t = vec_dot(vec_sub(c->pos, r.origin), n) / denom;
-	if (t <= 1e-4f)
+	if (t <= (float)1e-4)
 		return (false);
 	*t_hit = t;
 	p = vec_add(r.origin, vec_scale(r.direction, t));

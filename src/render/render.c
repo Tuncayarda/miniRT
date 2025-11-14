@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:26:44 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 18:26:45 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "render.h"
 
 int	render(t_scene *sc)
@@ -18,5 +30,6 @@ int	render(t_scene *sc)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(sc->mlx.ptr, sc->mlx.win, sc->mlx.img, 0, 0);
 	return (0);
 }

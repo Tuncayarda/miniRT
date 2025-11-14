@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:23:50 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 18:52:21 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "mlx_interface.h"
 #include "vector.h"
@@ -72,7 +84,7 @@ static bool	handle_look(int key, t_scene *sc)
 	else if (key == KEY_DOWN)
 	{
 		sc->cam.dir = rotate_around_axis(sc->cam.dir,
-					sc->cam.right, -step);
+				sc->cam.right, -step);
 		return (true);
 	}
 	return (false);
@@ -88,7 +100,7 @@ static bool	handle_fov(int key, t_scene *sc)
 	}
 	else if (key == KEY_L)
 	{
-		if (sc->cam.fov < 179)
+		if (sc->cam.fov < 174)
 			sc->cam.fov += FOV_STEP_DEG;
 		return (true);
 	}

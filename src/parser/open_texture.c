@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_texture.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:24:02 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 18:49:40 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser.h"
 #include "entities.h"
 #include "minirt.h"
@@ -7,19 +19,19 @@
 bool	open_texture(t_scene *sc, t_material *mat)
 {
 	mat->texture_img = mlx_xpm_file_to_image(
-		sc->mlx.ptr,
-		mat->texture_path,
-		&mat->tex_width,
-		&mat->tex_height
-	);
+			sc->mlx.ptr,
+			mat->texture_path,
+			&mat->tex_width,
+			&mat->tex_height
+			);
 	if (!mat->texture_img)
 		return (false);
 	mat->tex_addr = mlx_get_data_addr(
-		mat->texture_img,
-		&mat->tex_bpp,
-		&mat->tex_line_len,
-		&mat->tex_endian
-	);
+			mat->texture_img,
+			&mat->tex_bpp,
+			&mat->tex_line_len,
+			&mat->tex_endian
+			);
 	if (!mat->tex_addr)
 		return (false);
 	return (true);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_mat.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:24:23 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 18:49:25 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "entities.h"
 #include "gc.h"
 #include "libft.h"
@@ -14,7 +26,8 @@ static void	parse_che(t_material *mat, char **args, size_t i)
 	mat->has_checker = true;
 	mat->checker_scale = ft_atof(ft_strrchr(args[i], ':') + 1);
 	mat->checker_color.r = ft_atoi(ft_strchr(args[i] + 4, ',') + 1);
-	mat->checker_color.g = ft_atoi(ft_strchr(ft_strchr(args[i] + 4, ',')+ 1, ',') + 1);
+	mat->checker_color.g = ft_atoi(
+			ft_strchr(ft_strchr(args[i] + 4, ',') + 1, ',') + 1);
 	mat->checker_color.b = ft_atoi(ft_strrchr(args[i], ',') + 1);
 }
 

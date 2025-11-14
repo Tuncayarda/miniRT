@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hook_util.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:23:47 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 19:00:40 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include <string.h>
 #include "mlx_interface.h"
@@ -24,7 +36,7 @@ t_vec3	rotate_around_axis(t_vec3 v, t_vec3 axis, float angle_rad)
 	return (vec_add(vec_add(term1, term2), term3));
 }
 
-void	recalc_camera(scene *sc)
+void	recalc_camera(t_scene *sc)
 {
 	float	fov_rad;
 	t_vec3	up_hint;
@@ -38,7 +50,7 @@ void	recalc_camera(scene *sc)
 	sc->cam.dir = vec_norm(sc->cam.dir);
 	up_hint = vec_gen(0, 1, 0);
 	right = vec_cross(sc->cam.dir, up_hint);
-	if (fabsf(right.x) + fabsf(right.y) + fabsf(right.z) < 1e-6f)
+	if (fabsf(right.x) + fabsf(right.y) + fabsf(right.z) < (float)1e-6)
 	{
 		up_hint = vec_gen(0, 0, 1);
 		right = vec_cross(sc->cam.dir, up_hint);
@@ -49,7 +61,7 @@ void	recalc_camera(scene *sc)
 	sc->cam.half_width = sc->cam.half_height * ASPECT_RATIO;
 }
 
-void reset_scene(t_scene *sc)
+void	reset_scene(t_scene *sc)
 {
 	gc_manager(NULL, MODE_FREE);
 	sc->lights = NULL;

@@ -35,7 +35,7 @@ typedef struct s_scene
 	size_t				light_count;
 	size_t				ent_count;
 	t_skybox			sky;
-	mlx					mlx;
+	t_mlx					mlx;
 	char				**av;
 }						t_scene;
 

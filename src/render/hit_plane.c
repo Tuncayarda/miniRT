@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_plane.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:25:50 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 18:38:46 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "entities.h"
 #include "vector.h"
@@ -12,10 +24,10 @@ bool	hit_plane(t_plane *pl, t_ray r, float *t_hit)
 
 	n = vec_norm(pl->axis);
 	denom = vec_dot(n, r.direction);
-	if (fabs(denom) < 1e-6f)
+	if (fabs(denom) < (float)1e-6)
 		return (false);
 	t = vec_dot(vec_sub(pl->pos, r.origin), n) / denom;
-	if (t <= 1e-4f)
+	if (t <= (float)1e-4)
 		return (false);
 	*t_hit = t;
 	return (true);

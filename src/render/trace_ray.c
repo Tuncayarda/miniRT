@@ -1,11 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   trace_ray.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:26:54 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 18:28:10 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <math.h>
 #include "util.h"
 #include "entities.h"
 #include "render.h"
 #include "color.h"
 #include "libft.h"
-
-t_color sample_skybox(t_scene *sc, t_ray ray);
 
 t_color	trace_ray(t_scene *sc, t_ray r)
 {

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 18:26:34 by tuaydin           #+#    #+#             */
+/*   Updated: 2025/11/14 19:00:24 by tuaydin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RENDER_H
 # define RENDER_H
 
 # include "vector.h"
 # include "minirt.h"
 
-# define EPSILON 1e-6f
-# define SHADOW_BIAS 1e-3f
+# define EPSILON (float)1e-6
+# define SHADOW_BIAS (float)1e-3
 
 typedef struct s_ray
 {
@@ -64,10 +76,21 @@ typedef struct s_trace_var
 	int			iv;
 }				t_trace_var;
 
-int	render(scene *sc);
+typedef struct s_skybox_var
+{
+	t_vec3				d;
+	float				u;
+	float				v;
+	int					iv;
+	int					iu;
+	t_color				ret;
+	const unsigned char	*pix;
+}						t_skybox_var;
+
+int		render(t_scene *sc);
 
 t_ray	generate_ray(t_camera *cam, int x, int y);
-t_color	trace_ray(scene *sc, t_ray r);
+t_color	trace_ray(t_scene *sc, t_ray r);
 
 bool	solve_quadratic(float a, float b, float c, float *t);
 
@@ -76,14 +99,15 @@ bool	hit_plane(t_plane *pl, t_ray r, float *t_hit);
 bool	hit_cylinder(t_cylinder *cy, t_ray r, float *t_hit);
 bool	hit_circle(t_circle *c, t_ray r, float *t_hit);
 
-bool	check_hit(scene *sc, t_trace_var *var, t_ray r, size_t i);
-bool	get_closest(scene *sc, t_trace_var *var, t_ray r);
-void	define_closest(scene *sc, t_trace_var	*var, t_ray r);
-void	compute_diffuse(scene *sc, t_trace_var *var);
+bool	check_hit(t_scene *sc, t_trace_var *var, t_ray r, size_t i);
+bool	get_closest(t_scene *sc, t_trace_var *var, t_ray r);
+void	define_closest(t_scene *sc, t_trace_var	*var, t_ray r);
+void	compute_diffuse(t_scene *sc, t_trace_var *var);
 void	compute_specular(t_scene *sc, t_trace_var *var, t_ray r);
 void	compute_uv(t_scene *sc, t_trace_var *var);
 void	compute_checker(t_scene *sc, t_trace_var *var);
 void	compute_texture(t_scene *sc, t_trace_var *var);
 bool	is_reachable(t_scene *sc, t_trace_var *var, size_t i);
+t_color	sample_skybox(t_scene *sc, t_ray ray);
 
 #endif
