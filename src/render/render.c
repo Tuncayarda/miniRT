@@ -1,6 +1,6 @@
 #include "render.h"
 
-void	render(t_scene *sc)
+int	render(t_scene *sc)
 {
 	size_t	x;
 	size_t	y;
@@ -18,4 +18,5 @@ void	render(t_scene *sc)
 		}
 		y++;
 	}
+	return (0);
 }

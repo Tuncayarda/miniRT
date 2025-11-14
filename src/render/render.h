@@ -64,7 +64,7 @@ typedef struct s_trace_var
 	int			iv;
 }				t_trace_var;
 
-void	render(scene *sc);
+int	render(scene *sc);
 
 t_ray	generate_ray(t_camera *cam, int x, int y);
 t_color	trace_ray(scene *sc, t_ray r);

@@ -8,6 +8,14 @@
 #include <sys/time.h>
 #include <stdio.h>
 
+static void	init_mlx(mlx *m)
+{
+	m->ptr  = mlx_init();
+	m->win  = mlx_new_window(m->ptr, WIDTH, HEIGHT, "miniRT");
+	m->img  = mlx_new_image(m->ptr, WIDTH, HEIGHT);
+	m->addr = mlx_get_data_addr(m->img, &m->bpp, &m->line_len, &m->endian);
+}
+
 int	main(int ac, char **av)
 {
 	t_scene sc;
