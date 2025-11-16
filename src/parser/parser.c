@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:24:32 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:24:33 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 21:36:14 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	parse_line(t_scene *sc, char *line)
 		parse_plane(sc, args);
 	else if (ft_strcmp(args[0], "cy") == 0)
 		parse_cylinder(sc, args);
+	else if (ft_strcmp(args[0], "co") == 0)
+		parse_cone(sc, args);
 	else if (ft_strcmp(args[0], "SB") == 0)
 		parse_skybox(sc, args);
 }

@@ -6,15 +6,15 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 19:21:42 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 19:26:55 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 22:15:11 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define WIDTH	1280.0f
-# define HEIGHT	720.0f
+# define WIDTH	2560.0f
+# define HEIGHT	1440.0f
 
 # define ERROR_MSG_DFL "Error\n"
 

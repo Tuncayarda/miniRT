@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:26:34 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 19:00:24 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 22:27:33 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_trace_var
 	t_sphere	*sp;
 	t_cylinder	*cy;
 	t_circle	*c;
+	t_cone		*co;
 	t_ent_type	type;
 	t_material	mat;
 
@@ -98,6 +99,7 @@ bool	hit_sphere(t_sphere *s, t_ray r, float *t_hit);
 bool	hit_plane(t_plane *pl, t_ray r, float *t_hit);
 bool	hit_cylinder(t_cylinder *cy, t_ray r, float *t_hit);
 bool	hit_circle(t_circle *c, t_ray r, float *t_hit);
+bool	hit_cone(t_cone *c, t_ray r, float *t_hit);
 
 bool	check_hit(t_scene *sc, t_trace_var *var, t_ray r, size_t i);
 bool	get_closest(t_scene *sc, t_trace_var *var, t_ray r);

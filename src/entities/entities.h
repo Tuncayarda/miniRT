@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:23:35 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:23:36 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 21:40:53 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef enum e_ent_type
 	ENT_PLANE,
 	ENT_CYLINDER,
 	ENT_CIRCLE,
+	ENT_CONE,
 	ENT_UNKNOWN
 }					t_ent_type;
 
@@ -122,6 +123,16 @@ typedef struct s_cylinder
 	t_circle		bottom;
 	t_material		mat;
 }					t_cylinder;
+
+typedef struct s_cone
+{
+	t_vec3			pos;
+	t_vec3			axis;
+	t_color			color;
+	float			angle;
+	float			h;
+	t_material		mat;
+}					t_cone;
 
 void	*generate_entity(void *src, t_ent_type type);
 

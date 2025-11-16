@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:24:39 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:24:40 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 21:54:25 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ bool	check_hit(t_scene *sc, t_trace_var *var, t_ray r, size_t i)
 			&& var->t < var->closest_t)
 		|| (sc->ents[i].type == ENT_PLANE
 			&& hit_plane(sc->ents[i].ent, r, &var->t)
+			&& var->t < var->closest_t)
+		|| (sc->ents[i].type == ENT_CONE
+			&& hit_cone(sc->ents[i].ent, r, &var->t)
 			&& var->t < var->closest_t))
 		return (true);
 	return (false);

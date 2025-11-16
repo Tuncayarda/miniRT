@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:25:30 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:43:24 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 22:19:12 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static t_color	get_texture_color(t_trace_var *var)
 	c.r = pix[2];
 	return (c);
 }
+#include <unistd.h>
 
 void	compute_texture(t_scene *sc, t_trace_var *var)
 {

@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:24:34 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:24:35 by tuaydin          ###   ########.fr       */
+/*   Updated: 2025/11/14 21:38:17 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	parse_light(t_scene *sc, char **args);
 void	parse_sphere(t_scene *sc, char **args);
 void	parse_plane(t_scene *sc, char **args);
 void	parse_cylinder(t_scene *sc, char **args);
+void	parse_cone(t_scene *sc, char **args);
 bool	open_texture(t_scene *sc, t_material *mat);
 void	parse_material(t_material *mat, char **args);
 void	parse_skybox(t_scene *sc, char **args);
