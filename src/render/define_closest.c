@@ -59,13 +59,6 @@ static void	define_circle(t_scene *sc, t_trace_var *var, t_ray r)
 	var->mat = var->c->mat;
 }
 
-static void	define_cone(t_scene *sc, t_trace_var *var, t_ray r)
-{
-	var->co = (t_cone *)sc->ents[var->closest_i].ent;
-	var->normal = vec_norm(var->c->axis);
-	var->base = var->c->color;
-}
-
 void	define_closest(t_scene *sc, t_trace_var	*var, t_ray r)
 {
 	var->hit_p = vec_add(r.origin, vec_scale(r.direction, var->closest_t));
@@ -77,7 +70,4 @@ void	define_closest(t_scene *sc, t_trace_var	*var, t_ray r)
 		define_cylinder(sc, var, r);
 	else if (var->type == ENT_CIRCLE)
 		define_circle(sc, var, r);
-	else if (var->type == ENT_CONE)
-		define_cone(sc, var, r);
-		
 }

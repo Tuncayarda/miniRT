@@ -25,9 +25,6 @@ bool	check_hit(t_scene *sc, t_trace_var *var, t_ray r, size_t i)
 			&& var->t < var->closest_t)
 		|| (sc->ents[i].type == ENT_PLANE
 			&& hit_plane(sc->ents[i].ent, r, &var->t)
-			&& var->t < var->closest_t)
-		|| (sc->ents[i].type == ENT_CONE
-			&& hit_cone(sc->ents[i].ent, r, &var->t)
 			&& var->t < var->closest_t))
 		return (true);
 	return (false);

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <math.h>
+#include <unistd.h>
 #include "render.h"
 
 static inline void	fractf(float *x)
@@ -44,7 +45,6 @@ static t_color	get_texture_color(t_trace_var *var)
 	c.r = pix[2];
 	return (c);
 }
-#include <unistd.h>
 
 void	compute_texture(t_scene *sc, t_trace_var *var)
 {

@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:23:35 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 21:40:53 by tuaydin          ###   ########.fr       */
+/*   Updated: 2026/01/27 22:55:47 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef enum e_ent_type
 	ENT_PLANE,
 	ENT_CYLINDER,
 	ENT_CIRCLE,
-	ENT_CONE,
 	ENT_UNKNOWN
 }					t_ent_type;
 

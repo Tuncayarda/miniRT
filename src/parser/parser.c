@@ -38,8 +38,6 @@ void	parse_line(t_scene *sc, char *line)
 		parse_plane(sc, args);
 	else if (ft_strcmp(args[0], "cy") == 0)
 		parse_cylinder(sc, args);
-	else if (ft_strcmp(args[0], "co") == 0)
-		parse_cone(sc, args);
 	else if (ft_strcmp(args[0], "SB") == 0)
 		parse_skybox(sc, args);
 }

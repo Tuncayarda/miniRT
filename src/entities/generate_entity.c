@@ -27,8 +27,6 @@ void	*generate_entity(void *src, t_ent_type type)
 		size = sizeof(t_cylinder);
 	else if (type == ENT_CIRCLE)
 		size = sizeof(t_circle);
-	else if (type == ENT_CONE)
-		size = sizeof(t_cone);
 	else
 		return (NULL);
 	ret = gc_manager(malloc(size), MODE_ADD);

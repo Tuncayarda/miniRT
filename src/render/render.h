@@ -16,8 +16,8 @@
 # include "vector.h"
 # include "minirt.h"
 
-# define EPSILON (float)1e-6
-# define SHADOW_BIAS (float)1e-3
+# define EPSILON 1e-6f
+# define SHADOW_BIAS 1e-3f
 
 typedef struct s_ray
 {
@@ -42,7 +42,6 @@ typedef struct s_trace_var
 	t_sphere	*sp;
 	t_cylinder	*cy;
 	t_circle	*c;
-	t_cone		*co;
 	t_ent_type	type;
 	t_material	mat;
 
@@ -99,7 +98,6 @@ bool	hit_sphere(t_sphere *s, t_ray r, float *t_hit);
 bool	hit_plane(t_plane *pl, t_ray r, float *t_hit);
 bool	hit_cylinder(t_cylinder *cy, t_ray r, float *t_hit);
 bool	hit_circle(t_circle *c, t_ray r, float *t_hit);
-bool	hit_cone(t_cone *c, t_ray r, float *t_hit);
 
 bool	check_hit(t_scene *sc, t_trace_var *var, t_ray r, size_t i);
 bool	get_closest(t_scene *sc, t_trace_var *var, t_ray r);
