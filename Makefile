@@ -24,8 +24,58 @@ BASE_INC_DIRS	= inc $(PATH_LIBFT) $(PATH_GNL) $(PATH_MLX)
 INC_DIRS		= $(addprefix $(PATH_SRC)/,$(SUBDIRS))
 PATH_INCLUDE	= $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
 
-
-SRCS			= $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
+# Explicit source list (no wildcards)
+SRCS			= \
+	src/main.c \
+	src/_gc/gc.c \
+	src/color/color_add.c \
+	src/color/color_modul.c \
+	src/color/color_scale.c \
+	src/entities/add_entity.c \
+	src/entities/add_light.c \
+	src/entities/generate_entity.c \
+	src/mlx_interface/hook_util.c \
+	src/mlx_interface/key_hook.c \
+	src/mlx_interface/put_pix.c \
+	src/parser/open_texture.c \
+	src/parser/parse_amb_light.c \
+	src/parser/parse_cam.c \
+	src/parser/parse_cylinder.c \
+	src/parser/parse_light.c \
+	src/parser/parse_mat.c \
+	src/parser/parse_plane.c \
+	src/parser/parse_skybox.c \
+	src/parser/parse_sphere.c \
+	src/parser/parser.c \
+	src/render/check_hit.c \
+	src/render/compute_checker.c \
+	src/render/compute_diffuse.c \
+	src/render/compute_specular.c \
+	src/render/compute_texture.c \
+	src/render/compute_uv.c \
+	src/render/define_closest.c \
+	src/render/generate_ray.c \
+	src/render/get_closest.c \
+	src/render/hit_circle.c \
+	src/render/hit_cylinder.c \
+	src/render/hit_plane.c \
+	src/render/hit_sphere.c \
+	src/render/is_reacheable.c \
+	src/render/render.c \
+	src/render/sample_skybox.c \
+	src/render/solve_quadratic.c \
+	src/render/trace_ray.c \
+	src/util/raise_error.c \
+	src/vector/vec_add.c \
+	src/vector/vec_add3.c \
+	src/vector/vec_cross.c \
+	src/vector/vec_dot.c \
+	src/vector/vec_gen.c \
+	src/vector/vec_length.c \
+	src/vector/vec_negate.c \
+	src/vector/vec_norm.c \
+	src/vector/vec_scale.c \
+	src/vector/vec_sub.c
 
 OBJS			= $(patsubst $(PATH_SRC)/%, \
 					$(PATH_OBJ)/%, \
@@ -47,8 +97,13 @@ REL_FLAGS  := -O3 -ffast-math -flto -fno-math-errno -march=native -mtune=native
 DBG_FLAGS  := -O0 -g3
 ASAN_FLAGS := -fsanitize=address -fno-omit-frame-pointer
 
-CFLAGS     = -Wall -Wextra $(REL_FLAGS)
-LDFLAGS    = -flto
+CFLAGS     = -Wall -Wextra -Werror
+LDFLAGS    =
+
+ifeq ($(OPT),1)
+	CFLAGS  += $(REL_FLAGS)
+	LDFLAGS += -flto
+endif
 
 ifeq ($(ASAN),1)
   CFLAGS   = -Wall -Wextra $(DBG_FLAGS) $(ASAN_FLAGS)
@@ -65,7 +120,7 @@ debug:
 
 release:
 	@$(MAKE) clean
-	@$(MAKE)
+	@$(MAKE) OPT=1
 
 $(LIBFT):
 	@echo ">> Building libft"

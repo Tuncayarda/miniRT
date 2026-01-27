@@ -4,4 +4,3 @@
 # Sphere:        sp	POSITION	DIAMETER	COLOR
 # Plane:         pl	POSITION	NORMAL	    COLOR
 # Cylinder:      cy	POSITION	AXIS	    DIAMETER	HEIGHT	COLOR
-# Cone:          co POSITION    AXIS        ANGLE       HEIGHT  COLOR
