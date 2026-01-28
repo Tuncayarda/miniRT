@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:27:35 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:55:23 by tuaydin          ###   ########.fr       */
+/*   Updated: 2026/01/28 19:12:59 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int ac, char **av)
 	parser(&sc, ac, av);
 	mlx_key_hook(sc.mlx.win, on_key, &sc);
 	mlx_hook(sc.mlx.win, 2, (1L << 0), on_key, &sc);
+	mlx_hook(sc.mlx.win, 17, 0, destroy_prog, &sc);
 	mlx_loop_hook(sc.mlx.ptr, render, &sc);
 	mlx_loop(sc.mlx.ptr);
 	gc_manager(NULL, MODE_FREE);

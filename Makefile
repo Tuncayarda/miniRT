@@ -24,7 +24,6 @@ BASE_INC_DIRS	= inc $(PATH_LIBFT) $(PATH_GNL) $(PATH_MLX)
 INC_DIRS		= $(addprefix $(PATH_SRC)/,$(SUBDIRS))
 PATH_INCLUDE	= $(addprefix -I ,$(BASE_INC_DIRS) $(INC_DIRS))
 
-# Explicit source list (no wildcards)
 SRCS			= \
 	src/main.c \
 	src/_gc/gc.c \
@@ -37,6 +36,7 @@ SRCS			= \
 	src/mlx_interface/hook_util.c \
 	src/mlx_interface/key_hook.c \
 	src/mlx_interface/put_pix.c \
+	src/mlx_interface/destroy.c \
 	src/parser/open_texture.c \
 	src/parser/parse_amb_light.c \
 	src/parser/parse_cam.c \

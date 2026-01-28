@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:23:50 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 18:52:21 by tuaydin          ###   ########.fr       */
+/*   Updated: 2026/01/28 19:12:32 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,6 @@ int	on_key(int key, void *param)
 		return (0);
 	}
 	if (key == KEY_ESC)
-	{
-		gc_manager(NULL, MODE_FREE);
-		exit(0);
-	}
+		destroy_prog(param);
 	return (0);
 }

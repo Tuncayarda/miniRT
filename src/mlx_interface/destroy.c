@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raise_error.c                                      :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 18:26:58 by tuaydin           #+#    #+#             */
-/*   Updated: 2026/01/28 19:06:00 by tuaydin          ###   ########.fr       */
+/*   Created: 2026/01/28 19:09:03 by tuaydin           #+#    #+#             */
+/*   Updated: 2026/01/28 19:17:20 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
-#include "libft.h"
+#include "mlx_interface.h"
+#include "vector.h"
+#include "minirt.h"
 
-void	raise_error(t_scene *sc, const char *msg)
+int	destroy_prog(void *param)
 {
-	(void)sc;
-	gc_manager(NULL, MODE_FREE);
-	mlx_destroy_image(sc->mlx.ptr, sc->mlx.img);
-	mlx_destroy_window(sc->mlx.ptr, sc->mlx.win);
-	mlx_destroy_display(sc->mlx.ptr);
-	free(sc->mlx.ptr);
-	write(STDERR_FILENO, msg, ft_strlen(msg));
-	exit(1);
+	t_scene	*sc;
+
+	if (param)
+	{
+		sc = (t_scene *)param;
+		gc_manager(NULL, MODE_FREE);
+		mlx_destroy_image(sc->mlx.ptr, sc->mlx.img);
+		mlx_destroy_window(sc->mlx.ptr, sc->mlx.win);
+		mlx_destroy_display(sc->mlx.ptr);
+		free(sc->mlx.ptr);
+		exit(0);
+	}
+	return (0);
 }

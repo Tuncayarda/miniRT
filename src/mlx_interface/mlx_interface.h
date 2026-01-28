@@ -6,7 +6,7 @@
 /*   By: tuaydin <tuaydin@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 18:23:55 by tuaydin           #+#    #+#             */
-/*   Updated: 2025/11/14 19:03:15 by tuaydin          ###   ########.fr       */
+/*   Updated: 2026/01/28 19:13:29 by tuaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	put_pix(t_mlx *m, size_t x, size_t y, t_color color);
 void	reset_scene(t_scene *sc);
 void	recalc_camera(t_scene *sc);
 int		on_key(int key, void *param);
+int		destroy_prog(void *param);
 
 t_vec3	rotate_around_axis(t_vec3 v, t_vec3 axis, float angle_rad);
 
