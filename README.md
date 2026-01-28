@@ -4,9 +4,20 @@
 
 ## Description
 
-miniRT is a ray tracer implementation written in C. The project renders 3D scenes using ray tracing techniques, supporting basic geometric objects (spheres, planes, cylinders) with lighting, shadows, and materials. It provides a foundation for understanding computer graphics and 3D rendering algorithms.
+miniRT is a compact ray tracer written in C using MiniLibX. It parses `.rt` scene files and renders them at 1289x720 with ambient, point lighting, and simple materials. Supported primitives include spheres, planes, and cylinders with diffuse/specular shading, optional checker textures, and basic UV/texture support. The goal is to give a hands-on introduction to ray-object intersections, lighting models, and scene management while staying minimal enough for quick experimentation.
+
+Key features:
+- Scene parsing for lights, camera, materials, and primitives
+- Ray casting with closest-hit selection and shadow checks
+- Diffuse/specular lighting with ambient term; optional checker/texture sampling
+- Skybox support when a texture is provided
 
 ## Instructions
+
+### Prerequisites
+- Linux with `make` and `gcc`
+- X11 development headers (e.g., `libx11-dev`, `libxext-dev`, `libbsd-dev`) for MiniLibX
+- Included libs: libft, get_next_line, MiniLibX (already vendored under `libs/`)
 
 ### Compilation
 
@@ -20,22 +31,32 @@ make
 ./miniRT scenes/test0.rt
 ```
 
-The program accepts a scene file (.rt format) as an argument. Example scene files are provided in the `scenes/` directory.
+Use any `.rt` file from the `scenes/` directory (e.g., `scenes/basics/test_sphere0.rt`). The window opens at 1289x720. Close with a key or window close button.
+
+### Scene format essentials
+- `A ratio R,G,B` — ambient light (e.g., `A 0.2 255,255,255`)
+- `C x,y,z nx,ny,nz fov` — camera position, normal vector, field of view
+- `L x,y,z ratio R,G,B` — point light
+- `sp x,y,z diameter R,G,B [mat]` — sphere
+- `pl x,y,z nx,ny,nz R,G,B [mat]` — plane
+- `cy x,y,z nx,ny,nz diameter height R,G,B [mat]` — cylinder
+- Materials: extras like `spc:s,d` (specular strength, shininess), `chk:size,color1,color2`, `tex:path` when supported
 
 ### Controls
 
-- `ESC` - Exit the program
-- `Q` - Quit
+- ESC — exit
+- Q — exit
 
 ## Resources
 
 ### Documentation & References
-- [Ray Tracing in One Weekend](https://raytracing.github.io/) - Fundamental ray tracing concepts
-- [Scratchapixel](https://www.scratchapixel.com/) - Computer graphics theory
-- [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx) - Graphics library reference
+- [Ray Tracing in One Weekend](https://raytracing.github.io/) — foundational ray tracing walkthrough
+- [Scratchapixel](https://www.scratchapixel.com/) — theory and math for rendering
+- [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx) — windowing and image routines
+- [PBRT book](https://www.pbrt.org/) — deeper rendering reference (for future extensions)
 
 ### AI Usage
-AI tools were used for:
-- Debugging mathematical calculations in vector operations and intersection algorithms
-- Code optimization suggestions
-- Understanding ray-sphere and ray-plane intersection formulas
+AI assistance was used to:
+- Brainstorm and review intersection/math logic (spheres, planes, cylinders)
+- Suggest fixes for vector/matrix edge cases and shading bugs
+- Draft documentation snippets and organize build/run instructions
