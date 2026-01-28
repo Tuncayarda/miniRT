@@ -1,6 +1,6 @@
 # miniRT
 
-*This project has been created as part of the 42 curriculum by tuaydin.*
+*This project has been created as part of the 42 curriculum by tuaydin and abturan.*
 
 ## Description
 
@@ -44,8 +44,12 @@ Use any `.rt` file from the `scenes/` directory (e.g., `scenes/basics/test_spher
 
 ### Controls
 
-- ESC — exit
-- Q — exit
+- ESC — exit / close window
+- WASD — move camera forward/back/strafe
+- Z / X — move camera down / up
+- Arrow keys — look around (yaw/pitch)
+- K / L — decrease / increase FOV
+- R — reload the scene file
 
 ## Resources
 
@@ -54,6 +58,9 @@ Use any `.rt` file from the `scenes/` directory (e.g., `scenes/basics/test_spher
 - [Scratchapixel](https://www.scratchapixel.com/) — theory and math for rendering
 - [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx) — windowing and image routines
 - [PBRT book](https://www.pbrt.org/) — deeper rendering reference (for future extensions)
+- [Basic ray tracing walkthrough](https://gregorycernera.medium.com/an-explanation-of-basic-ray-tracing-313373c852ac)
+- [Ray–cylinder intersection discussion](https://stackoverflow.com/questions/73866852/ray-cylinder-intersection-formula)
+- [Phong specular reflection overview](https://www.geeksforgeeks.org/computer-graphics/phong-model-specular-reflection-in-computer-graphics/)
 
 ### AI Usage
 AI assistance was used to:
